@@ -1,8 +1,8 @@
 # Project Report
 
-Author: YOUR NAME HERE
-Email: YOUR EMAIL ADDRESS HERE
-Student ID number: STUDENT ID NUMBER HERE
+Author: Elizabete Beate Putnina
+Email: e.putnina@student.maastrichtuniversity.nl
+Student ID number: I6407289
 
 ## Gemini Lite Client Program
 

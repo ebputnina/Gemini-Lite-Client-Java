@@ -1,8 +1,84 @@
 package gemini_lite.protocol;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
+
 public final class Reply {
-    public static Reply parse(InputStream in) throws IOException, ProtocolSyntaxException { return null; }
-    public void writeTo(OutputStream out) throws IOException {}
+
+    private final int status;
+    private final String message;
+
+    public Reply(int status, String message) throws ProtocolSyntaxException {
+        if (status < 10 || status > 59) {
+            throw new ProtocolSyntaxException("Status out of range: " + status);
+        }
+
+        if (message == null) {
+            this.message = "";
+        } else {
+            this.message = message;
+        }
+        this.status = status;
+    }
+
+    public static Reply fromHeaderLine(String line) throws ProtocolSyntaxException {
+        if (line == null) {
+            throw new ProtocolSyntaxException("Null header line");
+        }
+        int sp = line.indexOf(' ');
+        String codeStr;
+        String meta;
+
+        if (sp == -1) {
+            codeStr = line;
+            meta = "";
+        } else {
+            codeStr = line.substring(0, sp);
+            meta = line.substring(sp + 1);
+        }
+
+        int code;
+        try {
+            code = Integer.parseInt(codeStr);
+        } catch (NumberFormatException e) {
+            throw new ProtocolSyntaxException("Non-numeric status: " + codeStr);
+        }
+
+        return new Reply(code, meta);
+    }
+
+    public static Reply parse(InputStream in) throws IOException {
+        String line = Wire.readHeaderLine(in);
+        return fromHeaderLine(line);
+    }
+
+
+    public void writeTo(OutputStream out) throws IOException {
+        String wireline = status + " " + message + Wire.CRLF;
+        out.write(wireline.getBytes(StandardCharsets.UTF_8));
+        out.flush();
+    }
+
+    public boolean isInput(){
+        return status >= 10 && status <= 19;
+    }
+    public boolean isSuccess(){
+        return status >= 20 && status <= 29;
+    }
+    public boolean isRedirectOrSlowdown(){
+        return status >= 30 && status <= 39;
+    }
+    public boolean isError(){
+        return status >= 40;
+    }
+
+    public int getStatus(){
+        return status;
+    }
+    public String getMessage(){
+        return message;
+    }
 }
 
