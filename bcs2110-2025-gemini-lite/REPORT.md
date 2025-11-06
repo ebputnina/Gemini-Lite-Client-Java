@@ -30,6 +30,7 @@ Run the provided minimal server (in one shell):
 
 ```powershell
 java -cp .\target\classes TerribleServer
+java -cp .\target\classes gemini_lite.Server
 ```
 
 Run the client (in another shell):
