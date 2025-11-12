@@ -7,7 +7,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -16,7 +15,6 @@ import gemini_lite.protocol.ProtocolSyntaxException;
 import gemini_lite.protocol.Reply;
 import gemini_lite.protocol.Request;
 import gemini_lite.protocol.RequestHandler;
-import gemini_lite.protocol.Wire;
 
 
 public class Server {
@@ -83,29 +81,29 @@ public class Server {
 
     private void handleConnection(Socket socket) throws IOException {
         try (socket; final InputStream in = socket.getInputStream(); final OutputStream out = socket.getOutputStream()) {
-            String requested;
+            final Request req;
             try {
-                requested = Wire.readHeaderLine(in);
+                req = Request.parse(in);
+            } catch (ProtocolSyntaxException | URISyntaxException e) {
+                // Malformed request — reply with a protocol error code and close.
+                final Reply bad = new Reply(59, "Bad request");
+                bad.writeTo(out);
+                out.flush();
+                return;
             } catch (IOException e) {
-                // nothing readable — send failure
+                // Nothing readable or I/O failure — send a read error
                 final Reply r = new Reply(59, "Read error");
                 r.writeTo(out);
                 out.flush();
                 return;
             }
 
-            System.err.println("Server received: " + requested + " from " + socket.getRemoteSocketAddress());
+            System.err.println("Server received: " + req.getURI() + " from " + socket.getRemoteSocketAddress());
 
             try {
-                final Request req = Request.parse(new java.io.ByteArrayInputStream((requested + Wire.CRLF).getBytes(StandardCharsets.UTF_8)));
-                final Reply rep = handler.handle(req); // 
+                final Reply rep = handler.handle(req);
                 rep.writeTo(out); // write reply header
-
                 // if success (20), handler may have prepared body elsewhere
-                out.flush();
-            } catch (ProtocolSyntaxException | URISyntaxException e) {
-                final Reply bad = new Reply(59, "Bad request");
-                bad.writeTo(out);
                 out.flush();
             } catch (Exception e) {
                 final Reply err = new Reply(40, "Server error"); // respond with server error
