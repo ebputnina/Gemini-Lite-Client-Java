@@ -1,4 +1,4 @@
-package gemini_lite.Engine;
+package gemini_lite.engine;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;

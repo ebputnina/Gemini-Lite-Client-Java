@@ -1,0 +1,61 @@
+[
+  {
+    "type": "client",
+    "name": "Test the connection.",
+    "url": "gemini-lite://localhost/",
+    "transactions": [
+      {
+        "url": "gemini-lite://localhost/",
+        "reply": "20 text/plain"
+      }
+    ],
+    "exitcode": 0,
+    "stdout": "",
+    "justification": "Check if the connection to the server works. "
+  },
+  {
+    "type": "client",
+    "name": "Put an invalid localhost port number in the URL.",
+    "url": "gemini-lite://localhost:900B/",
+    "transactions": [
+      {
+        "url": "gemini-lite://localhost:900B/",
+        "reply": "59 Malformed Request"
+      }
+    ],
+    "exitcode": 59,
+    "stdout": "59 Malformed Request",
+    "justification": "If the user accidentally enters an invalid port number (in this case including a letter), the client should be able to handle it and not break. It's mentioned in requirement 2: 'If, however, any other reply status code is received (i.e. codes starting with 4 or 5), print a descriptive error message to System.err, and terminate with process exit code the same as the reply status code.'"
+  },
+  {
+    "type": "client",
+    "name": <string>,
+    "url": <string>,
+    "transactions": [
+      ...
+    ],
+    "exitcode": <integer>,
+    "stdout": <string>,
+    "justification": <string>
+  },
+  {
+    "type": "client",            // Identifies this case as a client test case
+    "name": <string>,            // Pick a good, descriptive name
+    "url": <string>,             // The URL given to your Client to retrieve
+    "transactions": [            // Zero or more "Transaction" objects
+      ...                        //   - see below
+    ],
+    "exitcode": <integer>,       // Expected exit code from your Client
+    "stdout": <string>,          // Expected stdout from your Client
+    "justification": <string>    // Explanation of the test: see below
+  },
+  {
+    "type": "server",
+    "name": "Catch 'absolute nonesene' in the server response: non-numeric status.",
+    "documents": {},
+    "request": "gemini-lite://localhost/absolutenonesense",
+    "reply_regex": "^( .*)?$",
+    "body": "",
+    "justification": "If the server answers with 'ZZ' for example, the client must detect that as a protocol error. As mentioned in the project sepcification, 'the client must print an error report to System.err, must not output anything to System.out, and must terminate with exit code 1.'"
+  }
+]

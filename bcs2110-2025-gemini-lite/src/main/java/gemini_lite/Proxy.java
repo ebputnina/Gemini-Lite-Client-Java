@@ -1,6 +1,6 @@
 package gemini_lite;
 
-import gemini_lite.Engine.ClientEngine;
+import gemini_lite.engine.ClientEngine;
 import gemini_lite.protocol.ProxyRequestHandler;
 
 public class Proxy {

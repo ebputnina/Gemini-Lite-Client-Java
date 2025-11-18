@@ -2,7 +2,7 @@ package gemini_lite.protocol;
 
 import java.net.URI;
 
-import gemini_lite.Engine.ClientEngine;
+import gemini_lite.engine.ClientEngine;
 
 public class ProxyRequestHandler implements RequestHandler {
 

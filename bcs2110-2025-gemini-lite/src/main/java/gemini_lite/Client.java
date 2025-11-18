@@ -1,7 +1,7 @@
 package gemini_lite;
 import java.net.URI;
 
-import gemini_lite.Engine.ClientEngine;
+import gemini_lite.engine.ClientEngine;
 import gemini_lite.protocol.Reply;
 
 public class Client {
