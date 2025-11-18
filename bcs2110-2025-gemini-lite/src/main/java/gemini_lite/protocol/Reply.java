@@ -20,6 +20,7 @@ public final class Reply {
         } else {
             this.message = message;
         }
+
         this.status = status;
     }
 
@@ -42,6 +43,9 @@ public final class Reply {
         int code;
         try {
             code = Integer.parseInt(codeStr);
+            if (codeStr.length() != 2) {
+                throw new ProtocolSyntaxException("Status code must be two digits: " + codeStr);
+            }
         } catch (NumberFormatException e) {
             throw new ProtocolSyntaxException("Non-numeric status: " + codeStr);
         }
@@ -61,22 +65,33 @@ public final class Reply {
         out.flush();
     }
 
-    public boolean isInput(){
-        return status >= 10 && status <= 19;
+    public boolean isInput() {
+        return getStatusGroup() == 1;
     }
-    public boolean isSuccess(){
-        return status >= 20 && status <= 29;
+
+    public boolean isSuccess() {
+        return getStatusGroup() == 2;
     }
-    public boolean isRedirectOrSlowdown(){
-        return status >= 30 && status <= 39;
+
+    public boolean isRedirect() {
+        return getStatusGroup() == 3;
     }
-    public boolean isError(){
-        return status >= 40;
+
+    public boolean isTemporaryFailure() {
+        return getStatusGroup() == 4;
+    }
+
+    public boolean isPermanentFailure() {
+        return getStatusGroup() == 5;
     }
 
     public int getStatus(){
         return status;
     }
+    public int getStatusGroup(){
+        return status / 10;
+    }
+
     public String getMessage(){
         return message;
     }
