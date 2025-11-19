@@ -65,26 +65,6 @@ public final class Reply {
         out.flush();
     }
 
-    public boolean isInput() {
-        return getStatusGroup() == 1;
-    }
-
-    public boolean isSuccess() {
-        return getStatusGroup() == 2;
-    }
-
-    public boolean isRedirect() {
-        return getStatusGroup() == 3;
-    }
-
-    public boolean isTemporaryFailure() {
-        return getStatusGroup() == 4;
-    }
-
-    public boolean isPermanentFailure() {
-        return getStatusGroup() == 5;
-    }
-
     public int getStatus(){
         return status;
     }

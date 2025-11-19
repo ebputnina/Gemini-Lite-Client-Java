@@ -33,7 +33,6 @@ public class ClientEngine {
 
         final String requestLine = "gemini-lite://" + host + ((port != DEFAULT_PORT) ? (":" + port) : "") + path + Wire.CRLF;
 
-        // If proxy is configured, connect to the proxy host/port instead of the final host.
         final String connectHost = (proxyHost != null) ? proxyHost : host;
         final int connectPort = (proxyHost != null) ? proxyPort : port;
 
@@ -50,7 +49,6 @@ public class ClientEngine {
             return Reply.parse(in);
 
         } catch (SocketException se) {
-            // Windows may report: "An established connection was aborted by the software in your host machine" :(
             throw new SocketException("Connection aborted while reading reply: " + se.getMessage() + ". Check that the server is still running.", se);
         }
     }  
