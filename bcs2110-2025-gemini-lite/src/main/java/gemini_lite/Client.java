@@ -17,6 +17,9 @@ public class Client {
     public Client(String input) {
         this.input = input;
     }
+    public void setProxy(String host, int port) {
+        this.engine.setProxy(host, port);
+    }
 
     public static void main(String[] args) throws Exception {
         if (args.length < 1) {
@@ -33,6 +36,25 @@ public class Client {
             }
 
             Client client = new Client(cmdLineInput);
+
+            final String proxyEnv = System.getenv("GEMINI_LITE_PROXY");
+            if (proxyEnv != null && !proxyEnv.isEmpty()) {
+                final String[] parts = proxyEnv.split(":" , 2);
+                if (parts.length == 2) {
+                    try {
+                        final String ph = parts[0];
+                        final int pp = Integer.parseInt(parts[1]);
+                        client.setProxy(ph, pp);
+                    } catch (NumberFormatException nfe) {
+                        System.err.println("Invalid GEMINI_LITE_PROXY port: " + proxyEnv);
+                        System.exit(1);
+                    }
+                } else {
+                    System.err.println("Invalid GEMINI_LITE_PROXY format, expected host:port");
+                    System.exit(1);
+                }
+            }
+
             client.run(new URI(url));
         } catch (ProtocolSyntaxException e){
             System.err.println("Protocol/Network Error or Abrupt Disconnections: " + e.getMessage());

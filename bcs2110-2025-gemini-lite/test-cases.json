@@ -1,19 +1,4 @@
-[
-  {
-    "type": "client",
-    "name": "Test the connection.",
-    "url": "gemini-lite://localhost/",
-    "transactions": [
-      {
-        "url": "gemini-lite://localhost/",
-        "reply": "20 text/plain"
-      }
-    ],
-    "exitcode": 0,
-    "stdout": "",
-    "justification": "As per the project specifications, the Client has to connect to the Server. "
-  },
-  {
+[ {
     "type": "client",
     "name": "Invalid localhost port number in the URL.",
     "url": "gemini-lite://localhost:900B/",
@@ -23,37 +8,54 @@
         "reply": "59 Malformed Request"
       }
     ],
-    "exitcode": 59,
-    "stdout": "59 Malformed Request",
-    "justification": "If the user accidentally enters an invalid port number (in this case including a letter), the client should be able to handle it and not break. It's mentioned in requirement 2: 'If, however, any other reply status code is received (i.e. codes starting with 4 or 5), print a descriptive error message to System.err, and terminate with process exit code the same as the reply status code.'"
+    "exitcode": 1,
+    "stdout": "",
+    "justification": "If the user accidentally enters an invalid port number (in this case including a letter), that's a local parsing error. It's mentioned in requirement 2: 'if some local error situation arises... the client must print an error report to System.err, must not output anything to System.out, and must terminate with exit code 1.'"
   },
   {
     "type": "client",
-    "name": "",
-    "url": "<string>",
+    "name": "Client always connects to GEMINI_LITE_PROXY environment variable.",
+    "url": "gemini-lite://origin.example/index.txt",
     "transactions": [
+      {
+        "url": "gemini-lite://origin.example/index.txt",
+        "reply": "20 text/plain"
+      }
     ],
-    "exitcode": <integer>,
-    "stdout": "<string>",
-    "justification": "<string>"
+    "exitcode": 0,
+    "stdout": "Hello from origin\n",
+    "justification": "Requirement 4 states: 'if an environment variable GEMINI_LITE_PROXY is defined as a hostname:port string (e.g. GEMINI_LITE_PROXY=proxy.example:9999), then the client will always connect to that hostname and port instead of to whatever hostname and port is associated with a given URL to be retrieved.'"
   },
   {
-    "type": "client",            // Identifies this case as a client test case
-    "name": "<string>",            // Pick a good, descriptive name
-    "url": "<string>",             // The URL given to your Client to retrieve
-    "transactions": [            // Zero or more "Transaction" objects                     //   - see below
+    "type": "client",
+    "name": "Client handles input reply and encodes input as query.",
+    "url": "gemini-lite://localhost:1958/input",
+    "transactions": [
+      {
+        "url": "gemini-lite://localhost:1958/input",
+        "reply": "11 EnterSecret\r\n"
+      },
+      {
+        "url": "gemini-lite://localhost:1958/input?secret%20value",
+        "reply": "20 text/plain\r\nSecret response"
+      }
     ],
-    "exitcode": <integer>,       // Expected exit code from your Client
-    "stdout": "<string>",          // Expected stdout from your Client
-    "justification": "<string>"    // Explanation of the test: see below
+    "exitcode": 0,
+    "stdout": "Secret response\n",
+    "justification": "In Gemini Network Protocol Specification (status codes), it says that 'If a client receives a 1x response to a URI that already contains a query string, the client MUST replace the query string with the user input'. "
   },
   {
-    "type": "server",
+    "type": "client",
     "name": "Catch 'absolute nonesene' in the server response: non-numeric status.",
-    "documents": {},
-    "request": "gemini-lite://localhost/absolutenonesense",
-    "reply_regex": "^( .*)?$",
-    "body": "",
+    "url": "gemini-lite://localhost/absolutenonesense",
+    "transactions": [
+      {
+        "url": "gemini-lite://localhost/absolutenonesense",
+        "reply": "XX Invalid Status\r\n"
+      }
+    ],
+    "exitcode": 1,
+    "stdout": "",
     "justification": "As mentioned in the project specification Requirement 2 in 'Course Project: Gemini Lite', 'the client must print an error report to System.err, must not output anything to System.out, and must terminate with exit code 1.'"
   },
   {
@@ -62,30 +64,74 @@
     "documents": {
       "index.txt": "Server is running on port 2000"
     },
-    "request": "gemini-lite://localhost:2000/index.txt",
+    "request": "gemini-lite://localhost:2000/index.txt\r\n",
     "reply_regex": "^20 text/plain$",
     "body": "Server is running on port 2000",
-    "justification": "As per Requirement 3, the server must accept an optional [<port>] argument. This test checks that the server can listen on a custom port (2000 in this case) instead of the default 1958."
+    "justification": "As per Requirement 3 in 'Course Project: Gemini Lite', the server must accept an optional [<port>] argument. This test checks that the server can listen on a custom port (2000 in this case) instead of the default 1958."
   },
   {
     "type": "server",
-    "name": "",
+    "name": "Server rejects requests exceeding 1024 byte URI limit.",
     "documents": {
-
+      "index.txt": "Hello"
     },
-    "request": "",
-    "reply_regex": "",
+    "request": "gemini-lite://localhost/aaaaahelloaaaaaaaiaaaaaaaamaaaaaveryaaaaaaaveryaaaaaaaaacoolaaaaaaaayesaaaaaaaaaaaaathatsaaaaaaaaaaaaaaarightaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\n",
+    "reply_regex": "^59 .*",
     "body": "",
-    "justification": ""
+    "justification": "The Gemini specification states: 'When making a request, the URI MUST NOT exceed 1024 bytes, and a server MUST reject requests where the URI exceeds this limit.' The server should return status 59 (bad request) when receiving a URI longer than 1024 bytes."
   },
   {
     "type": "server",
-    "name": "",
+    "name": "Serve binary file with unknown extension (.bin)",
     "documents": {
+      "file.bin": "BINARYDATA"
     },
-    "request": "",
-    "reply_regex": "",
+    "request": "gemini-lite://localhost/file.bin\r\n",
+    "reply_regex": "^20 application/octet-stream$",
+    "body": "BINARYDATA",
+    "justification": "The specification in Requirement 3 in 'Course Project: Gemini Lite' mentions that if the URI path ends with .gmi → text/gemini; if .txt → text/plain; otherwise → application/octet-stream in Requirement 3. This ensures files with unknown extensions are served as application/octet-stream (a good fallback)."
+  },
+  {
+    "type": "server",
+    "name": "Request directory path without trailing slash",
+    "documents": {
+      "subfolder/index.txt": "Hello from a cool subfolder"
+    },
+    "request": "gemini-lite://localhost/subfolder\r\n",
+    "reply_regex": "^51 .*",
     "body": "",
-    "justification": ""
+    "justification": "As mentioned in Requirement 3 'Course Project: Gemini Lite', the server must not implicityl map directory requests to index files."
+  },
+  {
+    "type": "proxy",
+    "name": "Proxy transparently follows redirects to client.",
+    "request": "gemini-lite://localhost:1958/redirect-me\r\n",
+    "server_transactions": [
+      {
+        "request": "gemini-lite://localhost:1958/redirect-me\r\n",
+        "reply": "30 /final.txt\r\n"
+      },
+      {
+        "request": "gemini-lite://localhost:1958/final.txt\r\n",
+        "reply": "20 text/plain\r\nFinal content after redirect"
+      }
+    ],
+    "reply_regex": "^20 text/plain$",
+    "body": "Final content after redirect",
+    "justification": "Requirement 4 states: 'Your proxy will have to handle redirections and slow down replies just like Client does, making them transparent to its own clients.'"
+  },
+  {
+    "type": "proxy",
+    "name": "Proxy returns 43 when there's an error (proxy error).",
+    "request": "gemini-lite://localhost:1958/bad-redirect\r\n",
+    "server_transactions": [
+      {
+        "request": "gemini-lite://localhost:1958/bad-redirect\r\n",
+        "reply": "30 ://invalid url with spaces\r\n"
+      }
+    ],
+    "reply_regex": "^43 .*",
+    "body": "",
+    "justification": "Adheres to Requirement 4 in 'Course Project: Gemini Lite': Certain error situations will result in a special reply code 43, “proxy error”. When the origin server returns a redirect with an invalid URI that cannot be resolved, the proxy should catch this error and return status 43 to its client."
   }
 ]
