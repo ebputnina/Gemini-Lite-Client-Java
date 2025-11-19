@@ -1,6 +1,7 @@
 package gemini_lite;
 import java.io.Console;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 
 import gemini_lite.engine.ClientEngine;
@@ -9,28 +10,35 @@ import gemini_lite.protocol.Reply;
 
 public class Client {
     final ClientEngine engine = new ClientEngine();
-     private int redirectCount = 0;  // has to be under 6
+    private int redirectCount = 0;  // has to be under 6
     private URI currentUri;
-    private static String input;
+    private final String input;
 
     public Client(String input) {
         this.input = input;
     }
 
     public static void main(String[] args) throws Exception {
-        if (args.length > 0) {
+        if (args.length < 1) {
             System.err.println("Usage: gemini_lite.Client <URL> [<input>]");
             System.exit(1);
         }
         try {
             String url = args[0];
-            Client client = new Client(input);
+            String cmdLineInput;
+            if (args.length > 1) {
+                cmdLineInput = args[1];
+            } else {
+                cmdLineInput = null;
+            }
+
+            Client client = new Client(cmdLineInput);
             client.run(new URI(url));
         } catch (ProtocolSyntaxException e){
-            System.err.println("Local Protocol/Network Error or Abrupt Disconnections: " + e.getMessage());
+            System.err.println("Protocol/Network Error or Abrupt Disconnections: " + e.getMessage());
             System.exit(1);
         } catch (Exception e) {
-            System.err.println("Unexpected Application Error: " + e.getMessage());
+            System.err.println("Unexpected Error: " + e.getMessage());
             System.exit(1);
         }
     }
@@ -71,22 +79,35 @@ public class Client {
         String inputHere;
         if (input != null){
             System.err.println("Using command line input: " + input);
-            inputHere = input;
+            inputHere = this.input;
         }else if (console != null){
             if (reply.getStatus() == 11){
-                input = new String(console.readPassword("Enter input for '" + reply.getMessage() + "': "));
+                inputHere = new String(console.readPassword("Enter input for '" + reply.getMessage() + "': "));
             }else{
-                input = console.readLine("Enter input for '" + reply.getMessage() + "': ");
+                inputHere = console.readLine("Enter input for '" + reply.getMessage() + "': ");
             }
         }else{
             throw new ProtocolSyntaxException("Cannot read input for Status " + reply.getStatus());
         }
         // there should be smth about "t should be URI-encoded per [STD66] and sent as a query to the same URI that generated this response."
+        this.currentUri = engine.toQuery(this.currentUri, inputHere);
         return true;
     }
 
     private boolean handleSuccess(Reply reply) throws IOException {
         System.err.println("20 Success: " + reply.getMessage());
+        InputStream responseBody = engine.getLastResponseBody();
+        if (responseBody == null){
+            throw new IOException("The response body is null.");
+        }
+        byte[] buffer = new byte[4096];
+        int bytesRead;
+
+        while ((bytesRead = responseBody.read(buffer)) != -1) {
+            System.out.write(buffer, 0, bytesRead);
+        }
+        System.out.flush();
+
         System.exit(0);
         return false;
     }
