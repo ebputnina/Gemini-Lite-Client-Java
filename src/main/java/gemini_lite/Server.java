@@ -89,7 +89,7 @@ public class Server {
             try {
                 req = Request.parse(in);
             } catch (ProtocolSyntaxException | URISyntaxException e) {
-                final Reply bad = new Reply(51, "Bad request");
+                final Reply bad = new Reply(59, "Bad request");
                 bad.writeTo(out);
                 out.flush();
                 return;
