@@ -20,6 +20,11 @@ public class Wire {
             if (current == '\n' && prev != '\r') {
                 throw new ProtocolSyntaxException("LF without CR");
             }
+
+            // check maximum header length (not counting the final CRLF)
+            if (buffer.size() >= MAX_HEADER_LINE  && current != '\n') {
+                throw new ProtocolSyntaxException("Header line too long");
+            }
             
             // add byte to buffer
             buffer.write(current);
@@ -33,12 +38,6 @@ public class Wire {
                 System.arraycopy(bytes, 0, lineBytes, 0, bytes.length - 2);
                 return new String(lineBytes, StandardCharsets.UTF_8);
             }
-            
-            // Check maximum header length (not counting the final CRLF)
-            if (buffer.size() > MAX_HEADER_LINE) {
-                throw new ProtocolSyntaxException("Header line too long");
-            }
-            
             prev = current;
         }
         
