@@ -29,25 +29,23 @@
   },
   {
     "type": "client",
-    "name": <string>,
-    "url": <string>,
+    "name": "",
+    "url": "<string>",
     "transactions": [
-      ...
     ],
     "exitcode": <integer>,
-    "stdout": <string>,
-    "justification": <string>
+    "stdout": "<string>",
+    "justification": "<string>"
   },
   {
     "type": "client",            // Identifies this case as a client test case
-    "name": <string>,            // Pick a good, descriptive name
-    "url": <string>,             // The URL given to your Client to retrieve
-    "transactions": [            // Zero or more "Transaction" objects
-      ...                        //   - see below
+    "name": "<string>",            // Pick a good, descriptive name
+    "url": "<string>",             // The URL given to your Client to retrieve
+    "transactions": [            // Zero or more "Transaction" objects                     //   - see below
     ],
     "exitcode": <integer>,       // Expected exit code from your Client
-    "stdout": <string>,          // Expected stdout from your Client
-    "justification": <string>    // Explanation of the test: see below
+    "stdout": "<string>",          // Expected stdout from your Client
+    "justification": "<string>"    // Explanation of the test: see below
   },
   {
     "type": "server",
@@ -57,5 +55,37 @@
     "reply_regex": "^( .*)?$",
     "body": "",
     "justification": "As mentioned in the project specification Requirement 2 in 'Course Project: Gemini Lite', 'the client must print an error report to System.err, must not output anything to System.out, and must terminate with exit code 1.'"
+  },
+  {
+    "type": "server",
+    "name": "Listen on optional custom port (not hardcoded 1958)",
+    "documents": {
+      "index.txt": "Server is running on port 2000"
+    },
+    "request": "gemini-lite://localhost:2000/index.txt",
+    "reply_regex": "^20 text/plain$",
+    "body": "Server is running on port 2000",
+    "justification": "As per Requirement 3, the server must accept an optional [<port>] argument. This test checks that the server can listen on a custom port (2000 in this case) instead of the default 1958."
+  },
+  {
+    "type": "server",
+    "name": "",
+    "documents": {
+
+    },
+    "request": "",
+    "reply_regex": "",
+    "body": "",
+    "justification": ""
+  },
+  {
+    "type": "server",
+    "name": "",
+    "documents": {
+    },
+    "request": "",
+    "reply_regex": "",
+    "body": "",
+    "justification": ""
   }
 ]

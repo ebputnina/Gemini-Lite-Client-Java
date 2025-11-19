@@ -14,8 +14,9 @@ public class ProxyRequestHandler implements RequestHandler {
     }
 
     @Override
-    public Reply handle(Request request) throws Exception {
+    public HandlerResult handle(Request request) throws Exception {
         final URI uri = request.getURI();
-        return engine.sendRequest(uri);
+        Reply remoteReply = engine.sendRequest(uri);
+        return new HandlerResult(remoteReply, engine.getLastResponseBody());
     }
 }

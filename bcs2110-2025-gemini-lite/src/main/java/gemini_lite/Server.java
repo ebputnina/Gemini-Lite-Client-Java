@@ -27,15 +27,21 @@ public class Server {
     }
 
     public static void main(String[] args) throws Exception {
-        final int port = (args.length > 0) ? Integer.parseInt(args[0]) : 1958; // if the user passed a port, use it, if not, default to 1958
-        new Server(port, new gemini_lite.protocol.FileSystemRequestHandler()).run();
+        if (args.length < 1) {
+            System.err.println("Usage: java gemini_lite.Server <directory> [<port>]");
+            System.exit(1);
+        }
+
+        final String directory = args[0]; 
+        final int port = (args.length > 1) ? Integer.parseInt(args[1]) : 1958;
+        new Server(port, new gemini_lite.protocol.FileSystemRequestHandler(directory)).run();
     }
 
 
-    // Run the server: accept connections and dispatch to a thread-pool.
+
     public void run() throws IOException {
         final ExecutorService exec = Executors.newFixedThreadPool(32);
-        try (final ServerSocket server = new ServerSocket(port)) { // binds and listens for TCP connections
+        try (final ServerSocket server = new ServerSocket(port)) { 
             System.err.println("Server listening on port " + server.getLocalPort());
 
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
@@ -49,10 +55,9 @@ public class Server {
 
             while (!exec.isShutdown()) {
                 try {
-                    final Socket socket = server.accept(); // blocks until a connection is accepted
+                    final Socket socket = server.accept(); 
                     exec.submit(() -> {
                         try {
-                            // per-connection timeout to avoid hanging handlers
                             socket.setSoTimeout(5000);
                             handleConnection(socket);
                         } catch (Exception e) {
@@ -61,7 +66,6 @@ public class Server {
                         }
                     });
                 } catch (SocketException se) {
-                    // ServerSocket was closed (likely due to shutdown); exit loop
                     System.err.println("Server socket closed, exiting accept loop");
                     break;
                 } catch (IOException e) {
@@ -85,13 +89,11 @@ public class Server {
             try {
                 req = Request.parse(in);
             } catch (ProtocolSyntaxException | URISyntaxException e) {
-                // Malformed request — reply with a protocol error code and close.
                 final Reply bad = new Reply(59, "Bad request");
                 bad.writeTo(out);
                 out.flush();
                 return;
             } catch (IOException e) {
-                // Nothing readable or I/O failure — send a read error
                 final Reply r = new Reply(59, "Read error");
                 r.writeTo(out);
                 out.flush();
@@ -101,12 +103,23 @@ public class Server {
             System.err.println("Server received: " + req.getURI() + " from " + socket.getRemoteSocketAddress());
 
             try {
-                final Reply rep = handler.handle(req);
-                rep.writeTo(out); // write reply header
-                // if success (20), handler may have prepared body elsewhere
+                final gemini_lite.protocol.HandlerResult result = handler.handle(req);
+                final Reply rep = result.getReply();
+                rep.writeTo(out);
+
+                if (result.hasBody()) {
+                    try (final InputStream body = result.getBody()) {
+                        byte[] buffer = new byte[8192];
+                        int bytesRead;
+                        while ((bytesRead = body.read(buffer)) != -1) {
+                            out.write(buffer, 0, bytesRead);
+                        }
+                    }
+                }
+
                 out.flush();
             } catch (Exception e) {
-                final Reply err = new Reply(40, "Server error"); // respond with server error
+                final Reply err = new Reply(40, "Server error");
                 err.writeTo(out);
                 out.flush();
                 System.err.println("Handler threw: " + e.getMessage());
