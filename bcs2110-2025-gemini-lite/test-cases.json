@@ -11,11 +11,11 @@
     ],
     "exitcode": 0,
     "stdout": "",
-    "justification": "Check if the connection to the server works. "
+    "justification": "As per the project specifications, the Client has to connect to the Server. "
   },
   {
     "type": "client",
-    "name": "Put an invalid localhost port number in the URL.",
+    "name": "Invalid localhost port number in the URL.",
     "url": "gemini-lite://localhost:900B/",
     "transactions": [
       {
@@ -56,6 +56,6 @@
     "request": "gemini-lite://localhost/absolutenonesense",
     "reply_regex": "^( .*)?$",
     "body": "",
-    "justification": "If the server answers with 'ZZ' for example, the client must detect that as a protocol error. As mentioned in the project sepcification, 'the client must print an error report to System.err, must not output anything to System.out, and must terminate with exit code 1.'"
+    "justification": "As mentioned in the project specification Requirement 2 in 'Course Project: Gemini Lite', 'the client must print an error report to System.err, must not output anything to System.out, and must terminate with exit code 1.'"
   }
 ]
