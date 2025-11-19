@@ -34,11 +34,11 @@ public class FileSystemRequestHandler implements RequestHandler {
         File file = fullPath.toFile();
 
         if (!file.exists()) {
-            return new HandlerResult(new Reply(51, "Not found"));
+            return new HandlerResult(new Reply(59, "Not found"));
         }
 
         if (file.isDirectory()) {
-            return new HandlerResult(new Reply(51, "Not found"));
+            return new HandlerResult(new Reply(59, "Not found"));
         }
 
         if (!file.isFile() || !file.canRead()) {
