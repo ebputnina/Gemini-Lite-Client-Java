@@ -136,8 +136,8 @@ public class Client {
 
     private boolean handleRedirection(Reply reply) throws ProtocolSyntaxException {
         if (redirectCount >= 5) {
-            System.err.println("50 Permanent failure: Too many redirections (limit is 5).");
-            System.exit(50);
+            System.err.println("1 Too many redirections (limit is 5).");
+            System.exit(1);
             return false;
         }
         String newUri = reply.getMessage();
