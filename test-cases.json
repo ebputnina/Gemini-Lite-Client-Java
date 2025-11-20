@@ -95,7 +95,9 @@
     "type": "server",
     "name": "Request directory path without trailing slash",
     "documents": {
-      "subfolder/index.txt": "Hello from a cool subfolder"
+      "subdirectory": {
+        "index.txt": "Hello from a cool subfolder"
+      }
     },
     "request": "gemini-lite://localhost/subfolder\r\n",
     "reply_regex": "^51 .*",
