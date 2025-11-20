@@ -105,7 +105,7 @@
   {
     "type": "proxy",
     "name": "Proxy transparently follows redirects to client.",
-    "request": "gemini-lite://localhost:1958/redirectme\r\n",
+    "request": "gemini-lite://localhost:1958/redirectme\\r\\n",
     "server_transactions": [
       {
         "request": "gemini-lite://localhost:1958/redirectme",
