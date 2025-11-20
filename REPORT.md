@@ -88,6 +88,10 @@ mvn -f .\pom.xml -Dtest=RequestTests test
 ## Alternative DNS, Bakeoff and Wireshark outputs
 
 (Include content as specified in labs)
+your modified /etc/bind/named.conf.local and your modified /var/lib/bind/db.zone.lab-kale (Step 1).
+a trace of iterative DNS resolution of a domain in our local DNS tree (Step 2).
+an index.gmi file you write to serve to others (Step 4).
+an index.gmi file you retrieved from someone else’s server (Step 5).
 
 ## Reflection on Gemini Lite
 

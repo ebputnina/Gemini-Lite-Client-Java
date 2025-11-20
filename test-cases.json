@@ -105,14 +105,14 @@
   {
     "type": "proxy",
     "name": "Proxy transparently follows redirects to client.",
-    "request": "gemini-lite://localhost:1958/redirect-me\r\n",
+    "request": "gemini-lite://localhost:1958/redirectme\r\n",
     "server_transactions": [
       {
-        "request": "gemini-lite://localhost:1958/redirect-me\r\n",
+        "request": "gemini-lite://localhost:1958/redirectme",
         "reply": "30 /final.txt\r\n"
       },
       {
-        "request": "gemini-lite://localhost:1958/final.txt\r\n",
+        "request": "gemini-lite://localhost:1958/final.txt",
         "reply": "20 text/plain\r\nFinal content after redirect"
       }
     ],
@@ -126,7 +126,7 @@
     "request": "gemini-lite://localhost:1958/bad-redirect\r\n",
     "server_transactions": [
       {
-        "request": "gemini-lite://localhost:1958/bad-redirect\r\n",
+        "request": "gemini-lite://localhost:1958/bad-redirect",
         "reply": "30 ://invalid url with spaces\r\n"
       }
     ],
