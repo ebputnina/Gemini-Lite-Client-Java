@@ -13,6 +13,7 @@ public class Client {
     private int redirectCount = 0;  // has to be under 6
     private URI currentUri;
     private final String input;
+    private int slowDownCount = 0;
 
     public Client(String input) {
         this.input = input;
@@ -152,10 +153,25 @@ public class Client {
     }
 
     private boolean handleTemporaryFailure(Reply reply) {
-        System.err.println("Error: " + reply.getStatus() + " Temporary Failure: " + reply.getMessage());
-        if (reply.getStatus() == 44){
-            System.err.println("Status 44: Server requests slow down.");
+        if (reply.getStatus() == 44) {
+            // slowDownCount is a counter used to prevent infinite loops, otherwise it never stops
+            slowDownCount++;
+            if (slowDownCount > 5) {
+                System.err.println("Error: Slow down repeated too many times. Giving up. :(");
+                System.exit(44);
+            }
+            try {
+                int slowDownSeconds = Integer.parseInt(reply.getMessage());
+                System.err.println("Status 44: Slow down. Waiting " + slowDownSeconds + " seconds...");
+                Thread.sleep(slowDownSeconds * 1000L);
+                return true;
+            } catch (Exception e) {
+                System.err.println(reply.getMessage());
+                System.exit(44);
+            }
         }
+
+        System.err.println("Error: " + reply.getStatus() + " Temporary Failure: " + reply.getMessage());
         System.exit(reply.getStatus());
         return false;
     }

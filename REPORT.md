@@ -6,45 +6,20 @@ Student ID number: I6407289
 
 ## Gemini Lite Client Program
 
-Document how your program handles “slow down” replies in your report.
 Document how your program handles input requests in your report.
-
-PowerShell - run all tests:
-
+### Build the Client
 ```powershell
-cd "C:\Users\User\Documents\Computer Networks\bcs2110-project\bcs2110-2025-gemini-lite"
-mvn -f .\pom.xml test
+mvn clean package
+java -cp target/bcs2110-2025.jar gemini_lite.Client <URL> [input]
 ```
-
-Run a single test class or method:
-
-```powershell
-mvn -f .\pom.xml -Dtest=ReplyTests test
-mvn -f .\pom.xml -Dtest=ReplyTests#parseFormatRoundTrip test
-```
-
-Build package:
-
-```powershell
-mvn -f .\pom.xml package
-```
-
-Run the provided minimal server (in one shell):
-
-```powershell
-java -cp .\target\classes TerribleServer
-java -cp .\target\classes gemini_lite.Server
-```
-
-Run the client (in another shell):
-
-```powershell
-java -cp .\target\bcs2110-2025.jar gemini_lite.Client gemini-lite://localhost/
-```
-
-Note:
-- Client default port in source is 1958;
-
+### How my client handles “slow down” replies
+When my client receives status code 44 (slow down), it extracts the number of seconds in the meta field, waits for that duration, and then automatically retries the same URI. To avoid infinite
+loops, I have a counter that allows max 5 attempts before exiting with status code 44. If there is no valid meta field with the number for seconds, the client treats this as an invalid slow-down response and also exits with code 44.
+### How my client handles input requests (1x)
+### How my client handles success (2x)
+### How my client handles redirects (3x)
+### How my client handles errors (4x and 5x)
+### How my client handles buggy or even hostile servers?
 
 ### Bonus enhancements
 
