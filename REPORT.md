@@ -89,12 +89,35 @@ mvn -f .\pom.xml -Dtest=RequestTests test
 ![/var/lib/bind/db.zone.lab-kale](screenshotsForReport/varLib.jpeg)
 ### Our modified /etc/bind/named.conf.local
 
-
 ### An index.gmi we wrote to serve others
 
 ### An index.gmi we retrieved from someone else's server
 
+## Lab 5: Packet capture of joining a network
+What are the source and destination ethernet addresses for the request packet?
 
+What are the IP source and destination addresses in the request packet?
+
+What are the UDP source and destination port numbers in the request packet?
+
+What is the value of the DHCP “Your (client) IP address” field in the request packet?
+
+Does the request contain an Option 50 (Requested IP Address)? If so, what is the IP address being requested?
+
+What are the source and destination ethernet addresses for the ACK packet?
+
+What are the IP source and destination addresses in the ACK packet?
+
+What are the UDP source and destination port numbers in the ACK packet?
+
+What is the value of the DHCP “Your (client) IP address” field in the ACK packet?
+
+What are the values of the following DHCP options in the ACK packet?
+
+Option (1) Subnet Mask
+Option (3) Router
+Option (6) Domain Name Server
+Look back at Lab 2. Use the appropriate command (ip route, netstat -rn, or route print) to print out your laptop’s forwarding table. Satisfy yourself you can find the Subnet Mask and Router from the DHCP ACK packet in your machine’s forwarding table. Copy and paste the table into your report.
 
 ## Reflection on Gemini Lite
 
