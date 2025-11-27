@@ -20,8 +20,10 @@ public class FileSystemRequestHandler implements RequestHandler {
         if (path == null || path.isEmpty()) {
             path = "/";
         }
-        
-        if (path.startsWith("/")) {
+
+        if (path == null || path.isEmpty() || path.equals("/")) {
+            path = "";
+        } else if (path.startsWith("/")) {
             path = path.substring(1);
         }
         Path fullPath = Paths.get(documentRoot).resolve(path).normalize();
@@ -38,7 +40,11 @@ public class FileSystemRequestHandler implements RequestHandler {
         }
 
         if (file.isDirectory()) {
-            return new HandlerResult(new Reply(59, "Not found"));
+            File index = new File(file, "index.gmi");
+            if (!index.exists() || !index.isFile()) {
+                return new HandlerResult(new Reply(51, "Not found"));
+            }
+            file = index;
         }
 
         if (!file.isFile() || !file.canRead()) {
