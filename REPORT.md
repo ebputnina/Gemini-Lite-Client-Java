@@ -1,8 +1,8 @@
 # Project Report
 
-Author: Elizabete Beate Putnina
-Email: e.putnina@student.maastrichtuniversity.nl
-Student ID number: I6407289
+Author: Elizabete Beate Putnina  
+Email: e.putnina@student.maastrichtuniversity.nl  
+Student ID number: I6407289  
 
 ## Gemini Lite Client Program
 
@@ -81,85 +81,222 @@ mvn -f .\pom.xml -Dtest=ReplyTests test
 mvn -f .\pom.xml -Dtest=RequestTests test
 ```
 
-## Alternative DNS, Bakeoff and Wireshark outputs
+# Alternative DNS, Bakeoff and Wireshark outputs
+### A trace of iterative DNS resolution of a domain in our local DNS tree
+#### Root Server
+pi0021@pi0021:~ $ dig -t any baltics.italy.lab-kale  
 
+; <<>> DiG 9.18.41-1~deb12u1-Debian <<>> -t any baltics.italy.lab-kale  
+;; global options: +cmd  
+;; Got answer:  
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 25924  
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1  
+
+;; OPT PSEUDOSECTION:  
+; EDNS: version: 0, flags:; udp: 1232  
+; COOKIE: 58c20803c3d6a66501000000691efc0ed7e85798b786279c (good)  
+;; QUESTION SECTION:  
+;baltics.italy.lab-kale.		IN	ANY  
+
+;; ANSWER SECTION:  
+baltics.italy.lab-kale.	10	IN	SOA	ns1.baltics.italy.lab-kale. hostmaster.baltics.italy.lab-kale. 1 10 10 10 10  
+baltics.italy.lab-kale.	10	IN	NS	ns1.baltics.italy.lab-kale.  
+
+;; Query time: 107 msec  
+;; SERVER: 10.1.0.1#53(10.1.0.1) (TCP)  
+;; WHEN: Thu Nov 20 12:31:26 CET 2025  
+;; MSG SIZE  rcvd: 144  
+#### Searching further
+pi0021@pi0021:~ $ dig @10.1.0.100 baltics.italy.lab-kale  
+
+; <<>> DiG 9.18.41-1~deb12u1-Debian <<>> @10.1.0.100 baltics.italy.lab-kale  
+; (1 server found)  
+;; global options: +cmd  
+;; Got answer:  
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 44668  
+;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 2  
+;; WARNING: recursion requested but not available  
+
+;; OPT PSEUDOSECTION:  
+; EDNS: version: 0, flags:; udp: 1232  
+; COOKIE: f24b7fe15f6076a801000000691efcde5d36a2d8ff8b8a65 (good)  
+;; QUESTION SECTION:  
+;baltics.italy.lab-kale.		IN	A  
+
+;; AUTHORITY SECTION:  
+italy.lab-kale.		10	IN	NS	ns1.italy.lab-kale.  
+
+;; ADDITIONAL SECTION:  
+ns1.italy.lab-kale.	10	IN	A	10.1.0.101  
+
+;; Query time: 983 msec  
+;; SERVER: 10.1.0.100#53(10.1.0.100) (UDP)  
+;; WHEN: Thu Nov 20 12:34:55 CET 2025  
+;; MSG SIZE  rcvd: 113  
+
+#### Searching even further
+pi0021@pi0021:~ $ dig @10.1.0.101 baltics.italy.lab-kale  
+
+; <<>> DiG 9.18.41-1~deb12u1-Debian <<>> @10.1.0.101 baltics.italy.lab-kale  
+; (1 server found)  
+;; global options: +cmd  
+;; Got answer:  
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 382  
+;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 2  
+;; WARNING: recursion requested but not available  
+
+;; OPT PSEUDOSECTION:  
+; EDNS: version: 0, flags:; udp: 1232  
+; COOKIE: 4a1af06daa685d5b01000000691efd0dc9ac328c41c08da0 (good)  
+;; QUESTION SECTION:  
+;baltics.italy.lab-kale.		IN	A  
+
+;; AUTHORITY SECTION:  
+baltics.italy.lab-kale.	10	IN	NS	ns1.baltics.italy.lab-kale.  
+
+;; ADDITIONAL SECTION:  
+ns1.baltics.italy.lab-kale. 10	IN	A	10.1.0.120  
+
+;; Query time: 23 msec  
+;; SERVER: 10.1.0.101#53(10.1.0.101) (UDP)  
+;; WHEN: Thu Nov 20 12:35:41 CET 2025  
+;; MSG SIZE  rcvd: 113  
+
+#### Finally...
+pi0021@pi0021:~ $ dig -t any baltics.italy.lab-kale  
+
+; <<>> DiG 9.18.41-1~deb12u1-Debian <<>> -t any baltics.italy.lab-kale  
+;; global options: +cmd  
+;; Got answer:  
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 25924  
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1  
+
+;; OPT PSEUDOSECTION:  
+; EDNS: version: 0, flags:; udp: 1232  
+; COOKIE: 58c20803c3d6a66501000000691efc0ed7e85798b786279c (good)  
+;; QUESTION SECTION:  
+;baltics.italy.lab-kale.		IN	ANY  
+
+;; ANSWER SECTION:  
+baltics.italy.lab-kale.	10	IN	SOA	ns1.baltics.italy.lab-kale. hostmaster.baltics.italy.lab-kale. 1 10 10 10 10  
+baltics.italy.lab-kale.	10	IN	NS	ns1.baltics.italy.lab-kale.  
+
+;; Query time: 107 msec  
+;; SERVER: 10.1.0.1#53(10.1.0.1) (TCP)  
+;; WHEN: Thu Nov 20 12:31:26 CET 2025  
+;; MSG SIZE  rcvd: 144  
 
 
 ### Our modified /var/lib/bind/db.zone.lab-kale
 ![/var/lib/bind/db.zone.lab-kale](screenshotsForReport/varLib.jpeg)
 ### Our modified /etc/bind/named.conf.local
-
+![/etc/bind/named.conf.local](screenshotsForReport/etc.png)
 ### An index.gmi we wrote to serve others
-
+![our/index.gmi](screenshotsForReport/ourgmi.png)
 ### An index.gmi we retrieved from someone else's server
-We got the index.gmi a grpu with pi number 0087. The contents were like this:
+We got the index.gmi a group with pi number 0087. The contents were like this:  
 "Hello Gemini!"
+Request was "java -cp target/bcs2110-2025.jar gemini_lite.Client gemini-lite://anna.whaleshark.cutie.lab-kale/index.gmi"
 ## Lab 5: Packet capture of joining a network
-What are the source and destination ethernet addresses for the request packet?
 
-What are the IP source and destination addresses in the request packet?
+What are the source and destination ethernet addresses for the request packet? **src: Intel_e8:12:55 (dc:21:48:e8:12:55), Dst: Broadcast (ff:ff:ff:ff:ff:ff)**
 
-What are the UDP source and destination port numbers in the request packet?
+What are the IP source and destination addresses in the request packet? **Src: 0.0.0.0, Dst: 255.255.255.255**
 
-What is the value of the DHCP “Your (client) IP address” field in the request packet?
+What are the UDP source and destination port numbers in the request packet? **Src Port: 68, Dst Port: 67**
 
-Does the request contain an Option 50 (Requested IP Address)? If so, what is the IP address being requested?
+What is the value of the DHCP “Your (client) IP address” field in the request packet? **Your (client) IP address: 0.0.0.0**
 
-What are the source and destination ethernet addresses for the ACK packet?
+Does the request contain an Option 50 (Requested IP Address)? If so, what is the IP address being requested? **Option: (50) Requested IP Address (10.1.1.242)**
 
-What are the IP source and destination addresses in the ACK packet?
+What are the source and destination ethernet addresses for the ACK packet? **Src: RaspberryPi_32:7f:c4 (2c:cf:67:32:7f:c4), Dst: Intel_f2:93:60 (a0:b3:39:f2:93:60)**
 
-What are the UDP source and destination port numbers in the ACK packet?
+What are the IP source and destination addresses in the ACK packet? **Src: 10.1.0.1, Dst: 10.1.1.45**
 
-What is the value of the DHCP “Your (client) IP address” field in the ACK packet?
+What are the UDP source and destination port numbers in the ACK packet? **Src Port: 67, Dst Port: 68**
+
+What is the value of the DHCP “Your (client) IP address” field in the ACK packet? **Your (client) IP address: 10.1.1.45**
 
 What are the values of the following DHCP options in the ACK packet?
 
-Option (1) Subnet Mask
-Option (3) Router
-Option (6) Domain Name Server
-Look back at Lab 2. Use the appropriate command (ip route, netstat -rn, or route print) to print out your laptop’s forwarding table. Satisfy yourself you can find the Subnet Mask and Router from the DHCP ACK packet in your machine’s forwarding table. Copy and paste the table into your report.
+Option (1) Subnet Mask: **Length: 4, Subnet Mask: 255.255.252.0**  
+Option (3) Router: **Length: 4, Router: 10.1.0.3**  
+Option (6) Domain Name Server: **Length: 4, Domain Name Server: 10.1.0.1**  
+#### Look back at Lab 2. Use the appropriate command (ip route, netstat -rn, or route print) to print out your laptop’s forwarding table. Satisfy yourself you can find the Subnet Mask and Router from the DHCP ACK packet in your machine’s forwarding table. Copy and paste the table into your report.
+The DHCP ACK packet from the lab Pi contained:
 
-## Lab 5: Packet capture of Gemini Lite™ server
-What I got from my friend was 
-"Hello Gemini!"
+Subnet Mask: 255.255.252.0
 
+Router (Gateway): 10.1.0.3
 
-What was the line you changed in or added to your Pi’s db.zone.lab-kale file defining the A record pointing at your laptop? Copy it into your report.
+Assigned IP: 10.1.1.45
 
-In Wireshark, set the display filter to dns. Were there DNS queries in your packet capture related to the DNS name them.theirdomain.lab-kale? Copy-and-paste the request(s) and matching response(s) from the top panel into your report.
+These are the values that would appear in my forwarding table when connected to the lab network. However, I totally missed this point and my home network forwarding table does not show anything interesting.
+## Lab 5: Packet capture of Gemini Lite™ client
+#### What was the line you changed in or added to your Pi’s db.zone.lab-kale file defining the A record pointing at your laptop? Copy it into your report.
+elizabeth.baltics.italy.lab-kale. IN A 10.1.0.120
+### DNS
+#### Request:
+java -cp target/bcs2110-2025.jar gemini_lite.Client gemini-lite://anna.whaleshark.cutie.lab-kale/index.gmi
 
+#### Matching responses:
 15	3.209718	10.1.1.45	10.1.0.1	DNS	90	Standard query 0x9cdc A anna.whaleshark.cutie.lab-kale
-20	3.389471	10.1.0.1	10.1.1.45	DNS	106	Standard query response 0x9cdc A anna.whaleshark.cutie.lab-kale A 10.1.0.140
 
-Set the display filter to arp. Were there ARP requests relating to the IP address of your friend’s server? Copy-and-paste them from the top panel into your report.
+20	3.389471	10.1.0.1	10.1.1.45	DNS	106	Standard query response 0x9cdc A anna.whaleshark.cutie.lab-kale A 10.1.0.140
 
 I did not find any ARP connected to my far friend's IP 10.1.0.140.
 
-Set the display filter to tcp.port == 1958. In the top panel, find the first TCP packet in the conversation (will be headed toward their IP address at port 1958, with the SYN flag set). Right click it in the top panel, choose “Conversation Filter” and then “TCP”. Notice that the display filter has been set to something like tcp.stream eq 2.
+What is the relative sequence number of the start of this data block? **Seq=1**
 
-Now, choose “File” > “Export Packet Dissections” > “As Plain Text…”, and save as lab5_client_session.txt.
+What is the raw sequence number of the start of this data block? **Sequence Number (raw): 3411660525**
 
-Place this file next to your REPORT.md. Add it to git, and commit. Open it in a text editor for the next few questions.
+What will the next relative sequence number be? **Next Sequence Number: 57**
 
-In lab5_client_session.txt, find the packet with a TCP data block that conveys the requested URL to the server. Look at the packet dissection at the TCP level.
+What is its relative acknowledgement number? **Acknowledgment Number: 57**
 
-What is the relative sequence number of the start of this data block?
-What is the raw sequence number of the start of this data block?
-What will the next relative sequence number be?
-Look at the very next packet, coming back to the client from the server.
+What is its raw acknowledgement number? **Acknowledgment number (raw): 3411660581**
 
-What is its relative acknowledgement number?
-What is its raw acknowledgement number?
-How do these numbers relate to the numbers from the previous question?
-Find the packet(s) conveying the Gemini Lite™ reply data from the server to the client.
+How do these numbers relate to the numbers from the previous question? **The client's next sequence number is the same as the next packet's server ACK number.** 
 
-How many of them are there in your capture? (When I did this, I had two separate packets, one with the reply line and one with the body.)
+### Find the packet(s) conveying the Gemini Lite™ reply data from the server to the client.
+#### How many of them are there in your capture?
 Find the first packet with the TCP FIN bit set.
+I have two packets: packet 26 has the reply line and packet 27 has the body + FIN.
 
-Is it a packet from the client or from the server?
+#### Is it a packet from the client or from the server?
+It is a packet from the server (as the server uses: 10.1.0.140 and that's the source of this packet).
 
-### Lab 5: Port Scan
+## Lab 5: Packet capture of Gemini Lite™ server
+Because of a malfunction in the server and Wireshark, and running out of lab time, I could not get the correct packets from Wireshark. We asked TA to help us, however we could not figure it out in time. Wireshark eventually stopped recording any 1958 port traffic.
+I will answer to the questions below with theory as to what it should be (as best as I can figure it out).
+
+#### What is its calculated window size? 
+As far as I know, this should be readable from the TCP header of the request packet. Theoretically it is simply whatever value the client’s operating system advertises as its available receive buffer space.
+
+#### The rwnd field describes how much buffer space is available in some receive buffer. Whose receive buffer is being talked about: the client’s, or the server’s?
+I believe the client's receive buffer.
+#### Does the sequence number field describe the client-to-server bytes or the server-to-client bytes?
+The TCP sequence number always counts the bytes flowing in the direction of the packet. I believe the SEQ number refers to the bytes sent from the client to the server.
+#### Does the acknowledgement number field describe the client-to-server bytes or the server-to-client bytes?
+The ACK number always acknowledges data flowing in the opposite direction of the packet. I would suppose that the ACK acknowledges the bytes previously sent from the server to the client.
+#### How many of them are there in your capture?
+The server reply is split into two packets (as similarly to the client part of the REPORT.md):
+
+(1) one packet containing the reply header, 
+
+and
+
+(2) one packet containing the reply body.
+
+My server did not produce these packets during capture, so I could not count them, but theoretically (hopefully) there should be two.
+
+#### When you compare and contrast your two packet capture traces, one for a client and one for a server, what (if any) of that asymmetry do you notice in the on-the-wire packets?
+I would assume that the only asymmetry could be that the client always has to initiate the connection. 
+
+#### Is anything substantially different from the on-the-wire perspective about TCP acting as a server and TCP acting as a client? Why do you think this is?
+As TCP is a symmetric protocol, I believe nothing too much changes on-the-wire, and "client"-"server" socket is more like an abstraction and I think that also nothing much changes.
+
+## Lab 5: Port Scan
 PS C:\Users\ebput\bcs2110-project> nmap -T5 pi0021.kale
 Starting Nmap 7.98 ( https://nmap.org ) at 2025-11-27 12:04 +0100
 Nmap scan report for pi0021.kale (10.1.0.120)
