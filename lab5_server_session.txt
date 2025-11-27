@@ -1,0 +1,1768 @@
+No.     Time           Source                Protocol Destination           Length Info
+     43 5.109302       10.1.1.45             SSH      10.1.0.120            98     Client: Encrypted packet (len=44)
+
+Frame 43: Packet, 98 bytes on wire (784 bits), 98 bytes captured (784 bits) on interface \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19})
+        Interface name: \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}
+        Interface description: Wi-Fi
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Nov 27, 2025 13:02:24.244154000 W. Europe Standard Time
+    UTC Arrival Time: Nov 27, 2025 12:02:24.244154000 UTC
+    Epoch Arrival Time: 1764244944.244154000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 14.507000 milliseconds]
+    [Time since reference or first frame: 5.109302000 seconds]
+    Frame Number: 43
+    Frame Length: 98 bytes (784 bits)
+    Capture Length: 98 bytes (784 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp:ssh]
+    Character encoding: ASCII (0)
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Ethernet II, Src: Intel_f2:93:60 (a0:b3:39:f2:93:60), Dst: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+    Destination: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 11]
+Internet Protocol Version 4, Src: 10.1.1.45, Dst: 10.1.0.120
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 84
+    Identification: 0xa522 (42274)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 128
+    Protocol: TCP (6)
+    Header Checksum: 0x0000 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 10.1.1.45
+    Destination Address: 10.1.0.120
+    [Stream index: 7]
+Transmission Control Protocol, Src Port: 5700, Dst Port: 22, Seq: 1, Ack: 1, Len: 44
+    Source Port: 5700
+    Destination Port: 22
+    [Stream index: 2]
+    [Stream Packet Number: 1]
+    [Conversation completeness: Incomplete (12)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..0. = SYN-ACK: Absent
+        .... ...0 = SYN: Absent
+        [Completeness Flags: ··DA··]
+    [TCP Segment Len: 44]
+    Sequence Number: 1    (relative sequence number)
+    Sequence Number (raw): 1616220193
+    [Next Sequence Number: 45    (relative sequence number)]
+    Acknowledgment Number: 1    (relative ack number)
+    Acknowledgment number (raw): 871261371
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······AP···]
+    Window: 251
+    [Calculated window size: 251]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0x15ed [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 0.000000000 seconds]
+        [Time since previous frame in this TCP stream: 0.000000000 seconds]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]
+    TCP payload (44 bytes)
+SSH Protocol
+    Packet Length (encrypted): b44ce2a6
+    Encrypted Packet: 37d3dc10d27f0a941a514cba56d8ab2d0d262843dda0b4ff972271431eb95ed2a0c9da516eec3ec2
+    [Direction: Client to Server]
+
+No.     Time           Source                Protocol Destination           Length Info
+     45 5.231380       10.1.0.120            SSH      10.1.1.45             138    Server: Encrypted packet (len=84)
+
+Frame 45: Packet, 138 bytes on wire (1104 bits), 138 bytes captured (1104 bits) on interface \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19})
+        Interface name: \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}
+        Interface description: Wi-Fi
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Nov 27, 2025 13:02:24.366232000 W. Europe Standard Time
+    UTC Arrival Time: Nov 27, 2025 12:02:24.366232000 UTC
+    Epoch Arrival Time: 1764244944.366232000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 2.640000 milliseconds]
+    [Time delta from previous displayed frame: 122.078000 milliseconds]
+    [Time since reference or first frame: 5.231380000 seconds]
+    Frame Number: 45
+    Frame Length: 138 bytes (1104 bits)
+    Capture Length: 138 bytes (1104 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp:ssh]
+    Character encoding: ASCII (0)
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Ethernet II, Src: RaspberryPi_32:77:48 (2c:cf:67:32:77:48), Dst: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+    Destination: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 11]
+Internet Protocol Version 4, Src: 10.1.0.120, Dst: 10.1.1.45
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 124
+    Identification: 0xbbfc (48124)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: TCP (6)
+    Header Checksum: 0x68c9 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 10.1.0.120
+    Destination Address: 10.1.1.45
+    [Stream index: 7]
+Transmission Control Protocol, Src Port: 22, Dst Port: 5700, Seq: 1, Ack: 45, Len: 84
+    Source Port: 22
+    Destination Port: 5700
+    [Stream index: 2]
+    [Stream Packet Number: 2]
+    [Conversation completeness: Incomplete (12)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..0. = SYN-ACK: Absent
+        .... ...0 = SYN: Absent
+        [Completeness Flags: ··DA··]
+    [TCP Segment Len: 84]
+    Sequence Number: 1    (relative sequence number)
+    Sequence Number (raw): 871261371
+    [Next Sequence Number: 85    (relative sequence number)]
+    Acknowledgment Number: 45    (relative ack number)
+    Acknowledgment number (raw): 1616220237
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······AP···]
+    Window: 271
+    [Calculated window size: 271]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0x66e7 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 122.078000 milliseconds]
+        [Time since previous frame in this TCP stream: 122.078000 milliseconds]
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 43]
+        [The RTT to ACK the segment was: 122.078000 milliseconds]
+        [Bytes in flight: 84]
+        [Bytes sent since last PSH flag: 84]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]
+    TCP payload (84 bytes)
+SSH Protocol
+    Packet Length (encrypted): babcf8fd
+    Encrypted Packet: fe718efed70ed172f4adad1d609822be48c584007bcc09105d34c5ebb030dec1825c5bc56d243fc7a3618081e28b445be66f13d48702b6c9fab3fb8c0820db495274659ef417c9b249cfe02a1022e824
+    [Direction: Server to Client]
+
+No.     Time           Source                Protocol Destination           Length Info
+     46 5.277061       10.1.1.45             TCP      10.1.0.120            54     5700 → 22 [ACK] Seq=45 Ack=85 Win=250 Len=0
+
+Frame 46: Packet, 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19})
+        Interface name: \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}
+        Interface description: Wi-Fi
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Nov 27, 2025 13:02:24.411913000 W. Europe Standard Time
+    UTC Arrival Time: Nov 27, 2025 12:02:24.411913000 UTC
+    Epoch Arrival Time: 1764244944.411913000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 45.681000 milliseconds]
+    [Time delta from previous displayed frame: 45.681000 milliseconds]
+    [Time since reference or first frame: 5.277061000 seconds]
+    Frame Number: 46
+    Frame Length: 54 bytes (432 bits)
+    Capture Length: 54 bytes (432 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp]
+    Character encoding: ASCII (0)
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Ethernet II, Src: Intel_f2:93:60 (a0:b3:39:f2:93:60), Dst: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+    Destination: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 11]
+Internet Protocol Version 4, Src: 10.1.1.45, Dst: 10.1.0.120
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 40
+    Identification: 0xa523 (42275)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 128
+    Protocol: TCP (6)
+    Header Checksum: 0x0000 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 10.1.1.45
+    Destination Address: 10.1.0.120
+    [Stream index: 7]
+Transmission Control Protocol, Src Port: 5700, Dst Port: 22, Seq: 45, Ack: 85, Len: 0
+    Source Port: 5700
+    Destination Port: 22
+    [Stream index: 2]
+    [Stream Packet Number: 3]
+    [Conversation completeness: Incomplete (12)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..0. = SYN-ACK: Absent
+        .... ...0 = SYN: Absent
+        [Completeness Flags: ··DA··]
+    [TCP Segment Len: 0]
+    Sequence Number: 45    (relative sequence number)
+    Sequence Number (raw): 1616220237
+    [Next Sequence Number: 45    (relative sequence number)]
+    Acknowledgment Number: 85    (relative ack number)
+    Acknowledgment number (raw): 871261455
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x010 (ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 0... = Push: Not set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······A····]
+    Window: 250
+    [Calculated window size: 250]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0x15c1 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 167.759000 milliseconds]
+        [Time since previous frame in this TCP stream: 45.681000 milliseconds]
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 45]
+        [The RTT to ACK the segment was: 45.681000 milliseconds]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]
+
+No.     Time           Source                Protocol Destination           Length Info
+     51 6.037976       10.1.1.45             SSH      10.1.0.120            90     Client: Encrypted packet (len=36)
+
+Frame 51: Packet, 90 bytes on wire (720 bits), 90 bytes captured (720 bits) on interface \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19})
+        Interface name: \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}
+        Interface description: Wi-Fi
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Nov 27, 2025 13:02:25.172828000 W. Europe Standard Time
+    UTC Arrival Time: Nov 27, 2025 12:02:25.172828000 UTC
+    Epoch Arrival Time: 1764244945.172828000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 194.409000 milliseconds]
+    [Time delta from previous displayed frame: 760.915000 milliseconds]
+    [Time since reference or first frame: 6.037976000 seconds]
+    Frame Number: 51
+    Frame Length: 90 bytes (720 bits)
+    Capture Length: 90 bytes (720 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp:ssh]
+    Character encoding: ASCII (0)
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Ethernet II, Src: Intel_f2:93:60 (a0:b3:39:f2:93:60), Dst: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+    Destination: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 11]
+Internet Protocol Version 4, Src: 10.1.1.45, Dst: 10.1.0.120
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 76
+    Identification: 0xa524 (42276)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 128
+    Protocol: TCP (6)
+    Header Checksum: 0x0000 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 10.1.1.45
+    Destination Address: 10.1.0.120
+    [Stream index: 7]
+Transmission Control Protocol, Src Port: 5700, Dst Port: 22, Seq: 45, Ack: 85, Len: 36
+    Source Port: 5700
+    Destination Port: 22
+    [Stream index: 2]
+    [Stream Packet Number: 4]
+    [Conversation completeness: Incomplete (12)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..0. = SYN-ACK: Absent
+        .... ...0 = SYN: Absent
+        [Completeness Flags: ··DA··]
+    [TCP Segment Len: 36]
+    Sequence Number: 45    (relative sequence number)
+    Sequence Number (raw): 1616220237
+    [Next Sequence Number: 81    (relative sequence number)]
+    Acknowledgment Number: 85    (relative ack number)
+    Acknowledgment number (raw): 871261455
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······AP···]
+    Window: 250
+    [Calculated window size: 250]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0x15e5 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 928.674000 milliseconds]
+        [Time since previous frame in this TCP stream: 760.915000 milliseconds]
+    [SEQ/ACK analysis]
+        [Bytes in flight: 36]
+        [Bytes sent since last PSH flag: 36]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]
+    TCP payload (36 bytes)
+SSH Protocol
+    Packet Length (encrypted): def273c5
+    Encrypted Packet: e7a82a0405185c1599687a3a490a833b4537e09f6ed1b0929b1f238424c47894
+    [Direction: Client to Server]
+
+No.     Time           Source                Protocol Destination           Length Info
+     54 6.050422       10.1.0.120            SSH      10.1.1.45             106    Server: Encrypted packet (len=52)
+
+Frame 54: Packet, 106 bytes on wire (848 bits), 106 bytes captured (848 bits) on interface \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19})
+        Interface name: \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}
+        Interface description: Wi-Fi
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Nov 27, 2025 13:02:25.185274000 W. Europe Standard Time
+    UTC Arrival Time: Nov 27, 2025 12:02:25.185274000 UTC
+    Epoch Arrival Time: 1764244945.185274000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 4.425000 milliseconds]
+    [Time delta from previous displayed frame: 12.446000 milliseconds]
+    [Time since reference or first frame: 6.050422000 seconds]
+    Frame Number: 54
+    Frame Length: 106 bytes (848 bits)
+    Capture Length: 106 bytes (848 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp:ssh]
+    Character encoding: ASCII (0)
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Ethernet II, Src: RaspberryPi_32:77:48 (2c:cf:67:32:77:48), Dst: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+    Destination: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 11]
+Internet Protocol Version 4, Src: 10.1.0.120, Dst: 10.1.1.45
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 92
+    Identification: 0xbbfd (48125)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: TCP (6)
+    Header Checksum: 0x68e8 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 10.1.0.120
+    Destination Address: 10.1.1.45
+    [Stream index: 7]
+Transmission Control Protocol, Src Port: 22, Dst Port: 5700, Seq: 85, Ack: 81, Len: 52
+    Source Port: 22
+    Destination Port: 5700
+    [Stream index: 2]
+    [Stream Packet Number: 5]
+    [Conversation completeness: Incomplete (12)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..0. = SYN-ACK: Absent
+        .... ...0 = SYN: Absent
+        [Completeness Flags: ··DA··]
+    [TCP Segment Len: 52]
+    Sequence Number: 85    (relative sequence number)
+    Sequence Number (raw): 871261455
+    [Next Sequence Number: 137    (relative sequence number)]
+    Acknowledgment Number: 81    (relative ack number)
+    Acknowledgment number (raw): 1616220273
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······AP···]
+    Window: 271
+    [Calculated window size: 271]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0x0364 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 941.120000 milliseconds]
+        [Time since previous frame in this TCP stream: 12.446000 milliseconds]
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 51]
+        [The RTT to ACK the segment was: 12.446000 milliseconds]
+        [Bytes in flight: 52]
+        [Bytes sent since last PSH flag: 52]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]
+    TCP payload (52 bytes)
+SSH Protocol
+    Packet Length (encrypted): 937f746f
+    Encrypted Packet: ce4ab387ed21196208534804c065ffd99b8f8e5d35ef438f3d9061231fcaa158a631379029182fdf72d4e9aa11f6ac13
+    [Direction: Server to Client]
+
+No.     Time           Source                Protocol Destination           Length Info
+     55 6.101049       10.1.1.45             TCP      10.1.0.120            54     5700 → 22 [ACK] Seq=81 Ack=137 Win=250 Len=0
+
+Frame 55: Packet, 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19})
+        Interface name: \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}
+        Interface description: Wi-Fi
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Nov 27, 2025 13:02:25.235901000 W. Europe Standard Time
+    UTC Arrival Time: Nov 27, 2025 12:02:25.235901000 UTC
+    Epoch Arrival Time: 1764244945.235901000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 50.627000 milliseconds]
+    [Time delta from previous displayed frame: 50.627000 milliseconds]
+    [Time since reference or first frame: 6.101049000 seconds]
+    Frame Number: 55
+    Frame Length: 54 bytes (432 bits)
+    Capture Length: 54 bytes (432 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp]
+    Character encoding: ASCII (0)
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Ethernet II, Src: Intel_f2:93:60 (a0:b3:39:f2:93:60), Dst: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+    Destination: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 11]
+Internet Protocol Version 4, Src: 10.1.1.45, Dst: 10.1.0.120
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 40
+    Identification: 0xa525 (42277)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 128
+    Protocol: TCP (6)
+    Header Checksum: 0x0000 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 10.1.1.45
+    Destination Address: 10.1.0.120
+    [Stream index: 7]
+Transmission Control Protocol, Src Port: 5700, Dst Port: 22, Seq: 81, Ack: 137, Len: 0
+    Source Port: 5700
+    Destination Port: 22
+    [Stream index: 2]
+    [Stream Packet Number: 6]
+    [Conversation completeness: Incomplete (12)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..0. = SYN-ACK: Absent
+        .... ...0 = SYN: Absent
+        [Completeness Flags: ··DA··]
+    [TCP Segment Len: 0]
+    Sequence Number: 81    (relative sequence number)
+    Sequence Number (raw): 1616220273
+    [Next Sequence Number: 81    (relative sequence number)]
+    Acknowledgment Number: 137    (relative ack number)
+    Acknowledgment number (raw): 871261507
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x010 (ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 0... = Push: Not set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······A····]
+    Window: 250
+    [Calculated window size: 250]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0x15c1 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 991.747000 milliseconds]
+        [Time since previous frame in this TCP stream: 50.627000 milliseconds]
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 54]
+        [The RTT to ACK the segment was: 50.627000 milliseconds]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]
+
+No.     Time           Source                Protocol Destination           Length Info
+     56 6.136482       10.1.0.120            SSH      10.1.1.45             114    Server: Encrypted packet (len=60)
+
+Frame 56: Packet, 114 bytes on wire (912 bits), 114 bytes captured (912 bits) on interface \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19})
+        Interface name: \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}
+        Interface description: Wi-Fi
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Nov 27, 2025 13:02:25.271334000 W. Europe Standard Time
+    UTC Arrival Time: Nov 27, 2025 12:02:25.271334000 UTC
+    Epoch Arrival Time: 1764244945.271334000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 35.433000 milliseconds]
+    [Time delta from previous displayed frame: 35.433000 milliseconds]
+    [Time since reference or first frame: 6.136482000 seconds]
+    Frame Number: 56
+    Frame Length: 114 bytes (912 bits)
+    Capture Length: 114 bytes (912 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp:ssh]
+    Character encoding: ASCII (0)
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Ethernet II, Src: RaspberryPi_32:77:48 (2c:cf:67:32:77:48), Dst: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+    Destination: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 11]
+Internet Protocol Version 4, Src: 10.1.0.120, Dst: 10.1.1.45
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 100
+    Identification: 0xbbfe (48126)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: TCP (6)
+    Header Checksum: 0x68df [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 10.1.0.120
+    Destination Address: 10.1.1.45
+    [Stream index: 7]
+Transmission Control Protocol, Src Port: 22, Dst Port: 5700, Seq: 137, Ack: 81, Len: 60
+    Source Port: 22
+    Destination Port: 5700
+    [Stream index: 2]
+    [Stream Packet Number: 7]
+    [Conversation completeness: Incomplete (12)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..0. = SYN-ACK: Absent
+        .... ...0 = SYN: Absent
+        [Completeness Flags: ··DA··]
+    [TCP Segment Len: 60]
+    Sequence Number: 137    (relative sequence number)
+    Sequence Number (raw): 871261507
+    [Next Sequence Number: 197    (relative sequence number)]
+    Acknowledgment Number: 81    (relative ack number)
+    Acknowledgment number (raw): 1616220273
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······AP···]
+    Window: 271
+    [Calculated window size: 271]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0x395a [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 1.027180000 seconds]
+        [Time since previous frame in this TCP stream: 35.433000 milliseconds]
+    [SEQ/ACK analysis]
+        [Bytes in flight: 60]
+        [Bytes sent since last PSH flag: 60]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]
+    TCP payload (60 bytes)
+SSH Protocol
+    Packet Length (encrypted): 021ec44f
+    Encrypted Packet: 7caf98673750cfbeae4f618f18e18ed84fb0e33a36ab7b29e61649927344451922006c2a58bee78fda120ba812671eb0ebcca5a046299b59
+    [Direction: Server to Client]
+
+No.     Time           Source                Protocol Destination           Length Info
+     58 6.180330       10.1.1.45             TCP      10.1.0.120            54     5700 → 22 [ACK] Seq=81 Ack=197 Win=255 Len=0
+
+Frame 58: Packet, 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19})
+        Interface name: \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}
+        Interface description: Wi-Fi
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Nov 27, 2025 13:02:25.315182000 W. Europe Standard Time
+    UTC Arrival Time: Nov 27, 2025 12:02:25.315182000 UTC
+    Epoch Arrival Time: 1764244945.315182000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 33.283000 milliseconds]
+    [Time delta from previous displayed frame: 43.848000 milliseconds]
+    [Time since reference or first frame: 6.180330000 seconds]
+    Frame Number: 58
+    Frame Length: 54 bytes (432 bits)
+    Capture Length: 54 bytes (432 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp]
+    Character encoding: ASCII (0)
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Ethernet II, Src: Intel_f2:93:60 (a0:b3:39:f2:93:60), Dst: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+    Destination: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 11]
+Internet Protocol Version 4, Src: 10.1.1.45, Dst: 10.1.0.120
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 40
+    Identification: 0xa526 (42278)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 128
+    Protocol: TCP (6)
+    Header Checksum: 0x0000 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 10.1.1.45
+    Destination Address: 10.1.0.120
+    [Stream index: 7]
+Transmission Control Protocol, Src Port: 5700, Dst Port: 22, Seq: 81, Ack: 197, Len: 0
+    Source Port: 5700
+    Destination Port: 22
+    [Stream index: 2]
+    [Stream Packet Number: 8]
+    [Conversation completeness: Incomplete (12)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..0. = SYN-ACK: Absent
+        .... ...0 = SYN: Absent
+        [Completeness Flags: ··DA··]
+    [TCP Segment Len: 0]
+    Sequence Number: 81    (relative sequence number)
+    Sequence Number (raw): 1616220273
+    [Next Sequence Number: 81    (relative sequence number)]
+    Acknowledgment Number: 197    (relative ack number)
+    Acknowledgment number (raw): 871261567
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x010 (ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 0... = Push: Not set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······A····]
+    Window: 255
+    [Calculated window size: 255]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0x15c1 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 1.071028000 seconds]
+        [Time since previous frame in this TCP stream: 43.848000 milliseconds]
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 56]
+        [The RTT to ACK the segment was: 43.848000 milliseconds]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]
+
+No.     Time           Source                Protocol Destination           Length Info
+    115 15.128779      10.1.0.120            SSH      10.1.1.45             146    Server: Encrypted packet (len=92)
+
+Frame 115: Packet, 146 bytes on wire (1168 bits), 146 bytes captured (1168 bits) on interface \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19})
+        Interface name: \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}
+        Interface description: Wi-Fi
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Nov 27, 2025 13:02:34.263631000 W. Europe Standard Time
+    UTC Arrival Time: Nov 27, 2025 12:02:34.263631000 UTC
+    Epoch Arrival Time: 1764244954.263631000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 484.529000 milliseconds]
+    [Time delta from previous displayed frame: 8.948449000 seconds]
+    [Time since reference or first frame: 15.128779000 seconds]
+    Frame Number: 115
+    Frame Length: 146 bytes (1168 bits)
+    Capture Length: 146 bytes (1168 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp:ssh]
+    Character encoding: ASCII (0)
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Ethernet II, Src: RaspberryPi_32:77:48 (2c:cf:67:32:77:48), Dst: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+    Destination: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 11]
+Internet Protocol Version 4, Src: 10.1.0.120, Dst: 10.1.1.45
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 132
+    Identification: 0xbbff (48127)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: TCP (6)
+    Header Checksum: 0x68be [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 10.1.0.120
+    Destination Address: 10.1.1.45
+    [Stream index: 7]
+Transmission Control Protocol, Src Port: 22, Dst Port: 5700, Seq: 197, Ack: 81, Len: 92
+    Source Port: 22
+    Destination Port: 5700
+    [Stream index: 2]
+    [Stream Packet Number: 9]
+    [Conversation completeness: Incomplete (12)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..0. = SYN-ACK: Absent
+        .... ...0 = SYN: Absent
+        [Completeness Flags: ··DA··]
+    [TCP Segment Len: 92]
+    Sequence Number: 197    (relative sequence number)
+    Sequence Number (raw): 871261567
+    [Next Sequence Number: 289    (relative sequence number)]
+    Acknowledgment Number: 81    (relative ack number)
+    Acknowledgment number (raw): 1616220273
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······AP···]
+    Window: 271
+    [Calculated window size: 271]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0x5b89 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 10.019477000 seconds]
+        [Time since previous frame in this TCP stream: 8.948449000 seconds]
+    [SEQ/ACK analysis]
+        [Bytes in flight: 92]
+        [Bytes sent since last PSH flag: 92]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]
+    TCP payload (92 bytes)
+SSH Protocol
+    Packet Length (encrypted): ff138412
+    Encrypted Packet: 338635fab235bf0ac72388f5f5c917fe7947d14d52981cef9b8087db7e2e620ca57c8d06b48d52c7dc0605260e8573daf528146c51c5d886c1ceea19a57e9a8bd42afd037d6dd56e5f0bd2c792d1fe4aa2eca2f305e33330
+    [Direction: Server to Client]
+
+No.     Time           Source                Protocol Destination           Length Info
+    116 15.178347      10.1.1.45             TCP      10.1.0.120            54     5700 → 22 [ACK] Seq=81 Ack=289 Win=255 Len=0
+
+Frame 116: Packet, 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19})
+        Interface name: \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}
+        Interface description: Wi-Fi
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Nov 27, 2025 13:02:34.313199000 W. Europe Standard Time
+    UTC Arrival Time: Nov 27, 2025 12:02:34.313199000 UTC
+    Epoch Arrival Time: 1764244954.313199000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 49.568000 milliseconds]
+    [Time delta from previous displayed frame: 49.568000 milliseconds]
+    [Time since reference or first frame: 15.178347000 seconds]
+    Frame Number: 116
+    Frame Length: 54 bytes (432 bits)
+    Capture Length: 54 bytes (432 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp]
+    Character encoding: ASCII (0)
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Ethernet II, Src: Intel_f2:93:60 (a0:b3:39:f2:93:60), Dst: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+    Destination: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 11]
+Internet Protocol Version 4, Src: 10.1.1.45, Dst: 10.1.0.120
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 40
+    Identification: 0xa527 (42279)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 128
+    Protocol: TCP (6)
+    Header Checksum: 0x0000 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 10.1.1.45
+    Destination Address: 10.1.0.120
+    [Stream index: 7]
+Transmission Control Protocol, Src Port: 5700, Dst Port: 22, Seq: 81, Ack: 289, Len: 0
+    Source Port: 5700
+    Destination Port: 22
+    [Stream index: 2]
+    [Stream Packet Number: 10]
+    [Conversation completeness: Incomplete (12)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..0. = SYN-ACK: Absent
+        .... ...0 = SYN: Absent
+        [Completeness Flags: ··DA··]
+    [TCP Segment Len: 0]
+    Sequence Number: 81    (relative sequence number)
+    Sequence Number (raw): 1616220273
+    [Next Sequence Number: 81    (relative sequence number)]
+    Acknowledgment Number: 289    (relative ack number)
+    Acknowledgment number (raw): 871261659
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x010 (ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 0... = Push: Not set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······A····]
+    Window: 255
+    [Calculated window size: 255]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0x15c1 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 10.069045000 seconds]
+        [Time since previous frame in this TCP stream: 49.568000 milliseconds]
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 115]
+        [The RTT to ACK the segment was: 49.568000 milliseconds]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]
+
+No.     Time           Source                Protocol Destination           Length Info
+    146 19.681793      10.1.0.120            SSH      10.1.1.45             146    Server: Encrypted packet (len=92)
+
+Frame 146: Packet, 146 bytes on wire (1168 bits), 146 bytes captured (1168 bits) on interface \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19})
+        Interface name: \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}
+        Interface description: Wi-Fi
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Nov 27, 2025 13:02:38.816645000 W. Europe Standard Time
+    UTC Arrival Time: Nov 27, 2025 12:02:38.816645000 UTC
+    Epoch Arrival Time: 1764244958.816645000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 530.495000 milliseconds]
+    [Time delta from previous displayed frame: 4.503446000 seconds]
+    [Time since reference or first frame: 19.681793000 seconds]
+    Frame Number: 146
+    Frame Length: 146 bytes (1168 bits)
+    Capture Length: 146 bytes (1168 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp:ssh]
+    Character encoding: ASCII (0)
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Ethernet II, Src: RaspberryPi_32:77:48 (2c:cf:67:32:77:48), Dst: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+    Destination: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 11]
+Internet Protocol Version 4, Src: 10.1.0.120, Dst: 10.1.1.45
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 132
+    Identification: 0xbc00 (48128)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: TCP (6)
+    Header Checksum: 0x68bd [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 10.1.0.120
+    Destination Address: 10.1.1.45
+    [Stream index: 7]
+Transmission Control Protocol, Src Port: 22, Dst Port: 5700, Seq: 289, Ack: 81, Len: 92
+    Source Port: 22
+    Destination Port: 5700
+    [Stream index: 2]
+    [Stream Packet Number: 11]
+    [Conversation completeness: Incomplete (12)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..0. = SYN-ACK: Absent
+        .... ...0 = SYN: Absent
+        [Completeness Flags: ··DA··]
+    [TCP Segment Len: 92]
+    Sequence Number: 289    (relative sequence number)
+    Sequence Number (raw): 871261659
+    [Next Sequence Number: 381    (relative sequence number)]
+    Acknowledgment Number: 81    (relative ack number)
+    Acknowledgment number (raw): 1616220273
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······AP···]
+    Window: 271
+    [Calculated window size: 271]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0xa0c8 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 14.572491000 seconds]
+        [Time since previous frame in this TCP stream: 4.503446000 seconds]
+    [SEQ/ACK analysis]
+        [Bytes in flight: 92]
+        [Bytes sent since last PSH flag: 92]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]
+    TCP payload (92 bytes)
+SSH Protocol
+    Packet Length (encrypted): 1659eb78
+    Encrypted Packet: 15d00d3ccc8d6c030d2b6b3f536a3839031e4ba7875404d802f102bfc5943b984db1d1fb00cd33c22787632097818cc743dd138aa543e956882c61108e5b2e3aa14fb1326c8a626478da8f7f81a4fb7134634fce2f2b2a7c
+    [Direction: Server to Client]
+
+No.     Time           Source                Protocol Destination           Length Info
+    147 19.735358      10.1.1.45             TCP      10.1.0.120            54     5700 → 22 [ACK] Seq=81 Ack=381 Win=255 Len=0
+
+Frame 147: Packet, 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19})
+        Interface name: \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}
+        Interface description: Wi-Fi
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Nov 27, 2025 13:02:38.870210000 W. Europe Standard Time
+    UTC Arrival Time: Nov 27, 2025 12:02:38.870210000 UTC
+    Epoch Arrival Time: 1764244958.870210000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 53.565000 milliseconds]
+    [Time delta from previous displayed frame: 53.565000 milliseconds]
+    [Time since reference or first frame: 19.735358000 seconds]
+    Frame Number: 147
+    Frame Length: 54 bytes (432 bits)
+    Capture Length: 54 bytes (432 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp]
+    Character encoding: ASCII (0)
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Ethernet II, Src: Intel_f2:93:60 (a0:b3:39:f2:93:60), Dst: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+    Destination: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 11]
+Internet Protocol Version 4, Src: 10.1.1.45, Dst: 10.1.0.120
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 40
+    Identification: 0xa528 (42280)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 128
+    Protocol: TCP (6)
+    Header Checksum: 0x0000 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 10.1.1.45
+    Destination Address: 10.1.0.120
+    [Stream index: 7]
+Transmission Control Protocol, Src Port: 5700, Dst Port: 22, Seq: 81, Ack: 381, Len: 0
+    Source Port: 5700
+    Destination Port: 22
+    [Stream index: 2]
+    [Stream Packet Number: 12]
+    [Conversation completeness: Incomplete (12)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..0. = SYN-ACK: Absent
+        .... ...0 = SYN: Absent
+        [Completeness Flags: ··DA··]
+    [TCP Segment Len: 0]
+    Sequence Number: 81    (relative sequence number)
+    Sequence Number (raw): 1616220273
+    [Next Sequence Number: 81    (relative sequence number)]
+    Acknowledgment Number: 381    (relative ack number)
+    Acknowledgment number (raw): 871261751
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x010 (ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 0... = Push: Not set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······A····]
+    Window: 255
+    [Calculated window size: 255]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0x15c1 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 14.626056000 seconds]
+        [Time since previous frame in this TCP stream: 53.565000 milliseconds]
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 146]
+        [The RTT to ACK the segment was: 53.565000 milliseconds]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]
+
+No.     Time           Source                Protocol Destination           Length Info
+    192 25.169559      10.1.1.45             SSH      10.1.0.120            90     Client: Encrypted packet (len=36)
+
+Frame 192: Packet, 90 bytes on wire (720 bits), 90 bytes captured (720 bits) on interface \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19})
+        Interface name: \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}
+        Interface description: Wi-Fi
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Nov 27, 2025 13:02:44.304411000 W. Europe Standard Time
+    UTC Arrival Time: Nov 27, 2025 12:02:44.304411000 UTC
+    Epoch Arrival Time: 1764244964.304411000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 79.075000 milliseconds]
+    [Time delta from previous displayed frame: 5.434201000 seconds]
+    [Time since reference or first frame: 25.169559000 seconds]
+    Frame Number: 192
+    Frame Length: 90 bytes (720 bits)
+    Capture Length: 90 bytes (720 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp:ssh]
+    Character encoding: ASCII (0)
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Ethernet II, Src: Intel_f2:93:60 (a0:b3:39:f2:93:60), Dst: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+    Destination: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 11]
+Internet Protocol Version 4, Src: 10.1.1.45, Dst: 10.1.0.120
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 76
+    Identification: 0xa529 (42281)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 128
+    Protocol: TCP (6)
+    Header Checksum: 0x0000 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 10.1.1.45
+    Destination Address: 10.1.0.120
+    [Stream index: 7]
+Transmission Control Protocol, Src Port: 5700, Dst Port: 22, Seq: 81, Ack: 381, Len: 36
+    Source Port: 5700
+    Destination Port: 22
+    [Stream index: 2]
+    [Stream Packet Number: 13]
+    [Conversation completeness: Incomplete (12)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..0. = SYN-ACK: Absent
+        .... ...0 = SYN: Absent
+        [Completeness Flags: ··DA··]
+    [TCP Segment Len: 36]
+    Sequence Number: 81    (relative sequence number)
+    Sequence Number (raw): 1616220273
+    [Next Sequence Number: 117    (relative sequence number)]
+    Acknowledgment Number: 381    (relative ack number)
+    Acknowledgment number (raw): 871261751
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······AP···]
+    Window: 255
+    [Calculated window size: 255]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0x15e5 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 20.060257000 seconds]
+        [Time since previous frame in this TCP stream: 5.434201000 seconds]
+    [SEQ/ACK analysis]
+        [Bytes in flight: 36]
+        [Bytes sent since last PSH flag: 36]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]
+    TCP payload (36 bytes)
+SSH Protocol
+    Packet Length (encrypted): db12474a
+    Encrypted Packet: 27dbf287c0e05410d0b441948875400a603937c4d894f105b2e120909d942d84
+    [Direction: Client to Server]
+
+No.     Time           Source                Protocol Destination           Length Info
+    195 25.197692      10.1.0.120            SSH      10.1.1.45             90     Server: Encrypted packet (len=36)
+
+Frame 195: Packet, 90 bytes on wire (720 bits), 90 bytes captured (720 bits) on interface \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19})
+        Interface name: \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}
+        Interface description: Wi-Fi
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Nov 27, 2025 13:02:44.332544000 W. Europe Standard Time
+    UTC Arrival Time: Nov 27, 2025 12:02:44.332544000 UTC
+    Epoch Arrival Time: 1764244964.332544000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 0.000000000 seconds]
+    [Time delta from previous displayed frame: 28.133000 milliseconds]
+    [Time since reference or first frame: 25.197692000 seconds]
+    Frame Number: 195
+    Frame Length: 90 bytes (720 bits)
+    Capture Length: 90 bytes (720 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp:ssh]
+    Character encoding: ASCII (0)
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Ethernet II, Src: RaspberryPi_32:77:48 (2c:cf:67:32:77:48), Dst: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+    Destination: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 11]
+Internet Protocol Version 4, Src: 10.1.0.120, Dst: 10.1.1.45
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 76
+    Identification: 0xbc01 (48129)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: TCP (6)
+    Header Checksum: 0x68f4 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 10.1.0.120
+    Destination Address: 10.1.1.45
+    [Stream index: 7]
+Transmission Control Protocol, Src Port: 22, Dst Port: 5700, Seq: 381, Ack: 117, Len: 36
+    Source Port: 22
+    Destination Port: 5700
+    [Stream index: 2]
+    [Stream Packet Number: 14]
+    [Conversation completeness: Incomplete (12)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..0. = SYN-ACK: Absent
+        .... ...0 = SYN: Absent
+        [Completeness Flags: ··DA··]
+    [TCP Segment Len: 36]
+    Sequence Number: 381    (relative sequence number)
+    Sequence Number (raw): 871261751
+    [Next Sequence Number: 417    (relative sequence number)]
+    Acknowledgment Number: 117    (relative ack number)
+    Acknowledgment number (raw): 1616220309
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······AP···]
+    Window: 271
+    [Calculated window size: 271]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0xa079 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 20.088390000 seconds]
+        [Time since previous frame in this TCP stream: 28.133000 milliseconds]
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 192]
+        [The RTT to ACK the segment was: 28.133000 milliseconds]
+        [Bytes in flight: 36]
+        [Bytes sent since last PSH flag: 36]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]
+    TCP payload (36 bytes)
+SSH Protocol
+    Packet Length (encrypted): 4c1bd4bc
+    Encrypted Packet: 8641caa81933c15ee9d1ef742b3d18c6b935a2e78fe329d469ad2b4299e1a8ca
+    [Direction: Server to Client]
+
+No.     Time           Source                Protocol Destination           Length Info
+    196 25.252956      10.1.1.45             TCP      10.1.0.120            54     5700 → 22 [ACK] Seq=117 Ack=417 Win=255 Len=0
+
+Frame 196: Packet, 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19})
+        Interface name: \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}
+        Interface description: Wi-Fi
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Nov 27, 2025 13:02:44.387808000 W. Europe Standard Time
+    UTC Arrival Time: Nov 27, 2025 12:02:44.387808000 UTC
+    Epoch Arrival Time: 1764244964.387808000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 55.264000 milliseconds]
+    [Time delta from previous displayed frame: 55.264000 milliseconds]
+    [Time since reference or first frame: 25.252956000 seconds]
+    Frame Number: 196
+    Frame Length: 54 bytes (432 bits)
+    Capture Length: 54 bytes (432 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp]
+    Character encoding: ASCII (0)
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Ethernet II, Src: Intel_f2:93:60 (a0:b3:39:f2:93:60), Dst: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+    Destination: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 11]
+Internet Protocol Version 4, Src: 10.1.1.45, Dst: 10.1.0.120
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 40
+    Identification: 0xa52a (42282)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 128
+    Protocol: TCP (6)
+    Header Checksum: 0x0000 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 10.1.1.45
+    Destination Address: 10.1.0.120
+    [Stream index: 7]
+Transmission Control Protocol, Src Port: 5700, Dst Port: 22, Seq: 117, Ack: 417, Len: 0
+    Source Port: 5700
+    Destination Port: 22
+    [Stream index: 2]
+    [Stream Packet Number: 15]
+    [Conversation completeness: Incomplete (12)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..0. = SYN-ACK: Absent
+        .... ...0 = SYN: Absent
+        [Completeness Flags: ··DA··]
+    [TCP Segment Len: 0]
+    Sequence Number: 117    (relative sequence number)
+    Sequence Number (raw): 1616220309
+    [Next Sequence Number: 117    (relative sequence number)]
+    Acknowledgment Number: 417    (relative ack number)
+    Acknowledgment number (raw): 871261787
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x010 (ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 0... = Push: Not set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······A····]
+    Window: 255
+    [Calculated window size: 255]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0x15c1 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 20.143654000 seconds]
+        [Time since previous frame in this TCP stream: 55.264000 milliseconds]
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 195]
+        [The RTT to ACK the segment was: 55.264000 milliseconds]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]
+
+No.     Time           Source                Protocol Destination           Length Info
+    197 25.515787      10.1.0.120            SSH      10.1.1.45             162    Server: Encrypted packet (len=108)
+
+Frame 197: Packet, 162 bytes on wire (1296 bits), 162 bytes captured (1296 bits) on interface \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19})
+        Interface name: \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}
+        Interface description: Wi-Fi
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Nov 27, 2025 13:02:44.650639000 W. Europe Standard Time
+    UTC Arrival Time: Nov 27, 2025 12:02:44.650639000 UTC
+    Epoch Arrival Time: 1764244964.650639000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 262.831000 milliseconds]
+    [Time delta from previous displayed frame: 262.831000 milliseconds]
+    [Time since reference or first frame: 25.515787000 seconds]
+    Frame Number: 197
+    Frame Length: 162 bytes (1296 bits)
+    Capture Length: 162 bytes (1296 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp:ssh]
+    Character encoding: ASCII (0)
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Ethernet II, Src: RaspberryPi_32:77:48 (2c:cf:67:32:77:48), Dst: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+    Destination: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 11]
+Internet Protocol Version 4, Src: 10.1.0.120, Dst: 10.1.1.45
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x10 (DSCP: Unknown, ECN: Not-ECT)
+        0001 00.. = Differentiated Services Codepoint: Unknown (4)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 148
+    Identification: 0xbc02 (48130)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 64
+    Protocol: TCP (6)
+    Header Checksum: 0x68ab [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 10.1.0.120
+    Destination Address: 10.1.1.45
+    [Stream index: 7]
+Transmission Control Protocol, Src Port: 22, Dst Port: 5700, Seq: 417, Ack: 117, Len: 108
+    Source Port: 22
+    Destination Port: 5700
+    [Stream index: 2]
+    [Stream Packet Number: 16]
+    [Conversation completeness: Incomplete (12)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..0. = SYN-ACK: Absent
+        .... ...0 = SYN: Absent
+        [Completeness Flags: ··DA··]
+    [TCP Segment Len: 108]
+    Sequence Number: 417    (relative sequence number)
+    Sequence Number (raw): 871261787
+    [Next Sequence Number: 525    (relative sequence number)]
+    Acknowledgment Number: 117    (relative ack number)
+    Acknowledgment number (raw): 1616220309
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······AP···]
+    Window: 271
+    [Calculated window size: 271]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0xc8dc [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 20.406485000 seconds]
+        [Time since previous frame in this TCP stream: 262.831000 milliseconds]
+    [SEQ/ACK analysis]
+        [Bytes in flight: 108]
+        [Bytes sent since last PSH flag: 108]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]
+    TCP payload (108 bytes)
+SSH Protocol
+    Packet Length (encrypted): 7be67edc
+    Encrypted Packet: 3270654792462812aa452fd7c3fe97d6f9491ab27e4fe334c37ced6697ad8fb596fb611e85e0de7b4b85ac4dc346ae86e9fb8c02df3c08e2de2854c5f25a816387e41c613eb41242081fd70e72f0ffe07a2bd96883a8c4a569bbae3f6f7e94ef199e9ca198de442d
+    [Direction: Server to Client]
+
+No.     Time           Source                Protocol Destination           Length Info
+    198 25.568441      10.1.1.45             TCP      10.1.0.120            54     5700 → 22 [ACK] Seq=117 Ack=525 Win=254 Len=0
+
+Frame 198: Packet, 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}, id 0
+    Section number: 1
+    Interface id: 0 (\Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19})
+        Interface name: \Device\NPF_{4EBD075C-9462-42C4-AC9D-49B42AC56E19}
+        Interface description: Wi-Fi
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Nov 27, 2025 13:02:44.703293000 W. Europe Standard Time
+    UTC Arrival Time: Nov 27, 2025 12:02:44.703293000 UTC
+    Epoch Arrival Time: 1764244964.703293000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 52.654000 milliseconds]
+    [Time delta from previous displayed frame: 52.654000 milliseconds]
+    [Time since reference or first frame: 25.568441000 seconds]
+    Frame Number: 198
+    Frame Length: 54 bytes (432 bits)
+    Capture Length: 54 bytes (432 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ip:tcp]
+    Character encoding: ASCII (0)
+    [Coloring Rule Name: TCP]
+    [Coloring Rule String: tcp]
+Ethernet II, Src: Intel_f2:93:60 (a0:b3:39:f2:93:60), Dst: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+    Destination: RaspberryPi_32:77:48 (2c:cf:67:32:77:48)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: Intel_f2:93:60 (a0:b3:39:f2:93:60)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv4 (0x0800)
+    [Stream index: 11]
+Internet Protocol Version 4, Src: 10.1.1.45, Dst: 10.1.0.120
+    0100 .... = Version: 4
+    .... 0101 = Header Length: 20 bytes (5)
+    Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        0000 00.. = Differentiated Services Codepoint: Default (0)
+        .... ..00 = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    Total Length: 40
+    Identification: 0xa52b (42283)
+    010. .... = Flags: 0x2, Don't fragment
+        0... .... = Reserved bit: Not set
+        .1.. .... = Don't fragment: Set
+        ..0. .... = More fragments: Not set
+    ...0 0000 0000 0000 = Fragment Offset: 0
+    Time to Live: 128
+    Protocol: TCP (6)
+    Header Checksum: 0x0000 [validation disabled]
+    [Header checksum status: Unverified]
+    Source Address: 10.1.1.45
+    Destination Address: 10.1.0.120
+    [Stream index: 7]
+Transmission Control Protocol, Src Port: 5700, Dst Port: 22, Seq: 117, Ack: 525, Len: 0
+    Source Port: 5700
+    Destination Port: 22
+    [Stream index: 2]
+    [Stream Packet Number: 17]
+    [Conversation completeness: Incomplete (12)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..0. = SYN-ACK: Absent
+        .... ...0 = SYN: Absent
+        [Completeness Flags: ··DA··]
+    [TCP Segment Len: 0]
+    Sequence Number: 117    (relative sequence number)
+    Sequence Number (raw): 1616220309
+    [Next Sequence Number: 117    (relative sequence number)]
+    Acknowledgment Number: 525    (relative ack number)
+    Acknowledgment number (raw): 871261895
+    0101 .... = Header Length: 20 bytes (5)
+    Flags: 0x010 (ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 0... = Push: Not set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······A····]
+    Window: 254
+    [Calculated window size: 254]
+    [Window size scaling factor: -1 (unknown)]
+    Checksum: 0x15c1 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    [Timestamps]
+        [Time since first frame in this TCP stream: 20.459139000 seconds]
+        [Time since previous frame in this TCP stream: 52.654000 milliseconds]
+    [SEQ/ACK analysis]
+        [This is an ACK to the segment in frame: 197]
+        [The RTT to ACK the segment was: 52.654000 milliseconds]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]

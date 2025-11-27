@@ -92,7 +92,8 @@ mvn -f .\pom.xml -Dtest=RequestTests test
 ### An index.gmi we wrote to serve others
 
 ### An index.gmi we retrieved from someone else's server
-
+We got the index.gmi a grpu with pi number 0087. The contents were like this:
+"Hello Gemini!"
 ## Lab 5: Packet capture of joining a network
 What are the source and destination ethernet addresses for the request packet?
 
@@ -119,6 +120,83 @@ Option (3) Router
 Option (6) Domain Name Server
 Look back at Lab 2. Use the appropriate command (ip route, netstat -rn, or route print) to print out your laptop’s forwarding table. Satisfy yourself you can find the Subnet Mask and Router from the DHCP ACK packet in your machine’s forwarding table. Copy and paste the table into your report.
 
+## Lab 5: Packet capture of Gemini Lite™ server
+What I got from my friend was 
+"Hello Gemini!"
+
+
+What was the line you changed in or added to your Pi’s db.zone.lab-kale file defining the A record pointing at your laptop? Copy it into your report.
+
+In Wireshark, set the display filter to dns. Were there DNS queries in your packet capture related to the DNS name them.theirdomain.lab-kale? Copy-and-paste the request(s) and matching response(s) from the top panel into your report.
+
+15	3.209718	10.1.1.45	10.1.0.1	DNS	90	Standard query 0x9cdc A anna.whaleshark.cutie.lab-kale
+20	3.389471	10.1.0.1	10.1.1.45	DNS	106	Standard query response 0x9cdc A anna.whaleshark.cutie.lab-kale A 10.1.0.140
+
+Set the display filter to arp. Were there ARP requests relating to the IP address of your friend’s server? Copy-and-paste them from the top panel into your report.
+
+I did not find any ARP connected to my far friend's IP 10.1.0.140.
+
+Set the display filter to tcp.port == 1958. In the top panel, find the first TCP packet in the conversation (will be headed toward their IP address at port 1958, with the SYN flag set). Right click it in the top panel, choose “Conversation Filter” and then “TCP”. Notice that the display filter has been set to something like tcp.stream eq 2.
+
+Now, choose “File” > “Export Packet Dissections” > “As Plain Text…”, and save as lab5_client_session.txt.
+
+Place this file next to your REPORT.md. Add it to git, and commit. Open it in a text editor for the next few questions.
+
+In lab5_client_session.txt, find the packet with a TCP data block that conveys the requested URL to the server. Look at the packet dissection at the TCP level.
+
+What is the relative sequence number of the start of this data block?
+What is the raw sequence number of the start of this data block?
+What will the next relative sequence number be?
+Look at the very next packet, coming back to the client from the server.
+
+What is its relative acknowledgement number?
+What is its raw acknowledgement number?
+How do these numbers relate to the numbers from the previous question?
+Find the packet(s) conveying the Gemini Lite™ reply data from the server to the client.
+
+How many of them are there in your capture? (When I did this, I had two separate packets, one with the reply line and one with the body.)
+Find the first packet with the TCP FIN bit set.
+
+Is it a packet from the client or from the server?
+
+### Lab 5: Port Scan
+PS C:\Users\ebput\bcs2110-project> nmap -T5 pi0021.kale
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-11-27 12:04 +0100
+Nmap scan report for pi0021.kale (10.1.0.120)
+Host is up (0.022s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT   STATE SERVICE
+22/tcp open  ssh
+53/tcp open  domain
+MAC Address: 2C:CF:67:32:77:48 (Raspberry Pi (Trading))
+
+Nmap done: 1 IP address (1 host up) scanned in 11.70 seconds
+
+PS C:\Users\ebput\bcs2110-project> nmap -A -T5 pi0021.kale
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-11-27 12:05 +0100
+Nmap scan report for pi0021.kale (10.1.0.120)
+Host is up (0.044s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 9.2p1 Debian 2+deb12u3 (protocol 2.0)
+| ssh-hostkey:
+|   256 72:43:52:67:78:e0:23:ed:c9:f4:ff:89:fb:4a:91:03 (ECDSA)
+|_  256 28:29:a7:73:f7:82:f7:c5:56:1f:0c:8a:c0:ae:23:49 (ED25519)
+53/tcp open  domain  ISC BIND 9.18.41-1~deb12u1 (Debian Linux)
+| dns-nsid:
+|_  bind.version: 9.18.41-1~deb12u1-Debian
+MAC Address: 2C:CF:67:32:77:48 (Raspberry Pi (Trading))
+Aggressive OS guesses: Linux 2.6.32 (96%), Linux 4.15 (96%), OpenWrt 21.02 (Linux 5.4) (96%), MikroTik RouterOS 7.2 - 7.5 (Linux 5.6.3) (96%), Linux 3.2 - 4.14 (96%), Linux 4.15 - 5.19 (96%), Linux 2.6.32 - 3.10 (96%), Linux 4.19 (96%), Linux 6.0 (96%), Linux 3.4 - 3.10 (95%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 1 hop
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE
+HOP RTT      ADDRESS
+1   43.94 ms 10.1.0.120
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 35.07 seconds
 ## Reflection on Gemini Lite
 
 ### 1. Compare and contrast Gemini Lite’s response codes with HTTP/1.1’s response codes. Why do you think the designer of Gemini chose to depart from the classification scheme used by HTTP?
