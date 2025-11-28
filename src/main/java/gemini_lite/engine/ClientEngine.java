@@ -50,7 +50,6 @@ public class ClientEngine {
 
             out.write(requestLine.getBytes(StandardCharsets.UTF_8));
             out.flush();
-            System.err.println("Request sent! :) ");
             Reply reply = Reply.parse(in);
             this.lastReplyBody = in;
             return reply;

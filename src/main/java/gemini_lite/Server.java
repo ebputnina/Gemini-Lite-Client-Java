@@ -11,19 +11,19 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import gemini_lite.protocol.ProtocolSyntaxException;
-import gemini_lite.protocol.Reply;
-import gemini_lite.protocol.Request;
-import gemini_lite.protocol.RequestHandler;
+import gemini_lite.protocol.*;
 
 
 public class Server {
     private final int port;
     private final RequestHandler handler;
+    private final boolean isProxy;
+
 
     public Server(int port, RequestHandler handler) {
         this.port = port;
         this.handler = handler;
+        this.isProxy = handler instanceof ProxyRequestHandler;
     }
 
     public static void main(String[] args) throws Exception {
@@ -41,8 +41,9 @@ public class Server {
 
     public void run() throws IOException {
         final ExecutorService exec = Executors.newFixedThreadPool(32);
-        try (final ServerSocket server = new ServerSocket(port)) { 
-            System.err.println("Server listening on port " + server.getLocalPort());
+        try (final ServerSocket server = new ServerSocket(port)) {
+            System.err.println((isProxy ? "Proxy" : "Server") + " listening on port " + server.getLocalPort());
+
 
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
                 System.err.println("Shutdown requested: closing server socket and thread pool");
@@ -100,7 +101,11 @@ public class Server {
                 return;
             }
 
-            System.err.println("Server received: " + req.getURI() + " from " + socket.getRemoteSocketAddress());
+            if (isProxy) {
+                System.err.println("Proxy received: " + req.getURI() + " from " + socket.getRemoteSocketAddress());
+            } else {
+                System.err.println("Server received: " + req.getURI() + " from " + socket.getRemoteSocketAddress());
+            }
 
             try {
                 final gemini_lite.protocol.HandlerResult result = handler.handle(req);

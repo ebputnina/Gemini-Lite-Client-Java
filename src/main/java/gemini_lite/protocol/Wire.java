@@ -10,7 +10,7 @@ public class Wire {
     public static final String CRLF = "\r\n";
     static final int MAX_HEADER_LINE = 1024;
 
-    public static String readHeaderLine(InputStream in) throws IOException, ProtocolSyntaxException {
+    public static String readHeaderLine(InputStream in) throws IOException {
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         int prev = -1;
         int current;

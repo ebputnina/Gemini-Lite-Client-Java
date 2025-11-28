@@ -13,7 +13,7 @@ public final class Request {
         this.uri = uri;
     }
 
-    public static Request parse(InputStream in) throws IOException, ProtocolSyntaxException, URISyntaxException {
+    public static Request parse(InputStream in) throws IOException, URISyntaxException {
         String line = Wire.readHeaderLine(in);
         URI uri = new URI(line);
         if (!"gemini-lite".equalsIgnoreCase(uri.getScheme())) {
@@ -23,11 +23,6 @@ public final class Request {
             throw new ProtocolSyntaxException("Missing host");
         }
         return new Request(uri);
-    }
-    public void writeTo(OutputStream out) throws IOException {
-        String wireline = uri.toString() + Wire.CRLF;
-        out.write(wireline.getBytes(StandardCharsets.UTF_8));
-        out.flush();
     }
 
     public URI getURI() {

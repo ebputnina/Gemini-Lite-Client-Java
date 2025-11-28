@@ -12,7 +12,9 @@ public class ProxyRequestHandler implements RequestHandler {
     private final ClientEngine engine;
 
     public ProxyRequestHandler(ClientEngine engine) {
-        if (engine == null) throw new NullPointerException("engine");
+        if (engine == null){
+            throw new NullPointerException("engine");
+        }
         this.engine = engine;
     }
 
