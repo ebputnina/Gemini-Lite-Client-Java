@@ -16,15 +16,23 @@ java -cp target/bcs2110-2025.jar gemini_lite.Client <URL> [input]
 When my client receives status code 44 (slow down), it extracts the number of seconds in the meta field, waits for that duration, and then automatically retries the same URI. To avoid infinite
 loops, I have a counter that allows max 5 attempts before exiting with status code 44. If there is no valid meta field with the number for seconds, the client treats this as an invalid slow-down response and also exits with code 44.
 ### How my client handles input requests (1x)
-### How my client handles success (2x)
-### How my client handles redirects (3x)
-### How my client handles errors (4x and 5x)
-### How my client handles buggy or even hostile servers?
+When the server replies with a 1x Input expected, my client checks whether an input string was provided on the command line.  
+If yes, use that input automatically.  
+If not, it interacts with the user:  
+* For code 10, it reads normal text using console.readLine().  
+* For code 11, it reads sensitive input using console.readPassword().
+
+After the input is collected, the client appends it as a query component to the current URI. The request is then resent using this updated URI.
+### How my client deals with buggy/hostile server
+My client treats any malformed or unexpected server response as a local error. If the server sends an invalid status line, a non-numeric status code, missing header line termination, the parsing code throws a ProtocolSyntaxException or IOException. In all such cases, the client prints an error message to stderr and exits with status code 1.
+
 
 ### Bonus enhancements
-
-(If you attempt any bonus enhancements, document them in this section.)
-
+#### Gemtext colors
+I added a Gemtext colorful renderer that detects the MIME type text/gemini and prints it with ANSI colours (hand-picked by me the designer, I should start a designer career). Headings (#, ##, ###) are shown in a purple/dark green theme, list items (*) are green, and hyperlinks (=>) are shown in a bit darker green. Quotes (>) are bright green) All colouring is applied only for Gemtext; 
+other MIME types (e.g., text/plain) are printed normally.  
+Here's an example:  
+![Gemtext Example](screenshotsForReport/ansi.png)
 ## Gemini Lite Server Program
 
 (Insert user documentation for your program here. Include command-line usage instructions.)

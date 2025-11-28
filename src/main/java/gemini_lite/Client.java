@@ -123,14 +123,23 @@ public class Client {
         if (responseBody == null){
             throw new IOException("The response body is null.");
         }
-        byte[] buffer = new byte[4096];
-        int bytesRead;
 
-        while ((bytesRead = responseBody.read(buffer)) != -1) {
-            System.out.write(buffer, 0, bytesRead);
+        if (reply.getMessage().startsWith("text/gemini")) {
+            try (java.io.BufferedReader br = new java.io.BufferedReader(new java.io.InputStreamReader(responseBody))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    System.out.println(colorizeGemtextLine(line));
+                }
+            }
+        } else {
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+
+            while ((bytesRead = responseBody.read(buffer)) != -1) {
+                System.out.write(buffer, 0, bytesRead);
+            }
+            System.out.flush();
         }
-        System.out.flush();
-
         System.exit(0);
         return false;
     }
@@ -181,5 +190,36 @@ public class Client {
         System.exit(reply.getStatus());
         return false;
     }
+
+    private String colorizeGemtextLine(String line) {
+        final String RESET = "\u001B[0m";
+        final String C054 = "\u001B[38;5;54m";
+        final String C060 = "\u001B[38;5;60m";
+        final String C066 = "\u001B[38;5;66m";
+        final String C072 = "\u001B[38;5;72m";
+        final String C078 = "\u001B[38;5;78m";
+        final String C084 = "\u001B[38;5;84m";
+
+        if (line.startsWith("###")){
+            return C066 + line + RESET;
+        }
+        if (line.startsWith("##")){
+            return C060 + line + RESET;
+        }
+        if (line.startsWith("#")){
+            return C054 + line + RESET;
+        }
+        if (line.startsWith("=>")){
+            return C072 + line + RESET;
+        }
+        if (line.startsWith("*")){
+            return C078 + line + RESET;
+        }
+        if (line.startsWith(">")){
+            return C084 + line + RESET;
+        }
+        return line;
+    }
+
 }
 
