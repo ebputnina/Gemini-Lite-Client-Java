@@ -5,9 +5,7 @@ Email: e.putnina@student.maastrichtuniversity.nl
 Student ID number: I6407289  
 
 ## Gemini Lite Client Program
-
-Document how your program handles input requests in your report.
-### Build the Client
+### Build and run the Client
 ```powershell
 mvn clean package
 java -cp target/bcs2110-2025.jar gemini_lite.Client <URL> [input]
@@ -34,7 +32,11 @@ other MIME types (e.g., text/plain) are printed normally.
 Here's an example:  
 ![Gemtext Example](screenshotsForReport/ansi.png)
 ## Gemini Lite Server Program
-
+### Build and run the Server
+```powershell
+mvn clean package
+java -cp target/bcs2110-2025.jar gemini_lite.Server <directory> [port]
+```
 (Insert user documentation for your program here. Include command-line usage instructions.)
 Think about how your program will handle requests for a URL that corresponds to a directory rather than a file. Document this in your report.
 
@@ -43,26 +45,28 @@ Think about how your program will handle requests for a URL that corresponds to 
 (If you attempt any bonus enhancements, document them in this section.)
 
 ## Gemini Lite Proxy Program
-
-(Insert user documentation for your program here. Include command-line usage instructions.)
-Certain error situations will result in a special reply code 43, “proxy error”.
-Document in your report the situations which provoke reply code 43 in your program.
-
+### Build and run the Proxy
+```powershell
+mvn clean package
+java -cp target/bcs2110-2025.jar gemini_lite.Proxy <port>
+```
+### How to use the Proxy with the Client
+```powershell
+$env:GEMINI_LITE_PROXY="localhost:1959"
+java -cp target/bcs2110-2025.jar gemini_lite.Client <URL> [input]
+```
+### Situations which provoke reply code 43
+My proxy uses a ProxyRequestHandler, which forwards the incoming request to the origin server using ClientEngine.   
+The proxy generates status code 43 in the following situations:  
+#### Invalid redirect target
+Because the server gave a redirect that could not be turned into a valid URI.
+#### Cannot reach upstream server
+fails to connect to the server for different reasons
+#### Runtime/logic error inside the proxy
+some internal proxy error
 ### Bonus enhancements
 
 (If you attempt any bonus enhancements, document them in this section.)
-
-
-
-# Run only Reply tests
-```powershell
-mvn -f .\pom.xml -Dtest=ReplyTests test
-```
-
-# Run only Request tests
-```powershell
-mvn -f .\pom.xml -Dtest=RequestTests test
-```
 
 # Alternative DNS, Bakeoff and Wireshark outputs
 ### A trace of iterative DNS resolution of a domain in our local DNS tree
