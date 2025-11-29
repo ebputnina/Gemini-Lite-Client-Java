@@ -37,12 +37,35 @@ Here's an example:
 mvn clean package
 java -cp target/bcs2110-2025.jar gemini_lite.Server <directory> [port]
 ```
-(Insert user documentation for your program here. Include command-line usage instructions.)
-Think about how your program will handle requests for a URL that corresponds to a directory rather than a file. Document this in your report.
+### How my server handles requests for a URL that corresponds to a directory rather than a file
+When the server receives a request whose resolved path points to a directory, it does not directly return the directory.
+It simply checks whether the directory contains an index.gmi file. If index.gmi exists and is readable, the server serves it with MIME type text/gemini.
+If no index.gmi exists, the server returns a 51 Not found reply.
+
+### Request latencies
+To measure p50 and p99 latencies, I executed 100 consecutive requests for each file size using PowerShell’s Measure-Command cmdlet. The created files were afterwards deleted.
+Here are the results I got:
+
+|           File size | p50 | p99 |
+|--------------------:| --- | --- |
+|        **64 bytes** | 285.5201 ms | 322.6598 ms |
+|      **1024 bytes** | 285.9006 ms |  334.5414 ms |
+|    **131072 bytes** | 285.6199 ms | 441.8928 ms |
+| **104857600 bytes** | 9993.0124 ms | 25394.2674 ms |
+### Throughput for the 100 MB file
+To estimate server throughput, I divided the file size (104,857,600 bytes) by the measured transfer time.  
+Using the median (p50) latency for the 100 MB file:  
+`Throughput= 104,857,600 bytes / 9.9930124 seconds ≈ 10,500,000 bytes/second ≈ 10.5 MB/s `  
+Using the p99 latency for the same file:  
+`Throughput= 104,857,600 bytes / 25.3942674 seconds ≈ 4,130,000 bytes/second ≈ 4.1 MB/s`  
 
 ### Bonus enhancements
-
-(If you attempt any bonus enhancements, document them in this section.)
+#### Concurrent server
+My Gemini Lite server supports multiple simultaneous client requests by using a fixed-size thread pool:  
+`Executors.newFixedThreadPool(32)`  
+If anything goes wrong, it returns clear error messages if something goes wrong, without stopping the rest of the server.  
+To verify that my server handles multiple simultaneous requests, I opened three separate terminal windows and launched the client in all of them at the same time.  
+![Server concurrency example](screenshotsForReport/concurrent.png)
 
 ## Gemini Lite Proxy Program
 ### Build and run the Proxy
@@ -61,12 +84,18 @@ The proxy generates status code 43 in the following situations:
 #### Invalid redirect target
 Because the server gave a redirect that could not be turned into a valid URI.
 #### Cannot reach upstream server
-fails to connect to the server for different reasons
-#### Runtime/logic error inside the proxy
-some internal proxy error
-### Bonus enhancements
+Fails to reach the origin server for different reasons, such as timeout, DNS failures, no route to host, etc.
+#### Upstream server sends malformed or unparsable data
+If the upstream server sends an invalid Gemini-Lite response (invalid status code, missing CRLF, truncated header, etc.), ClientEngine throws a parsing exception.
+The proxy catches the exception and returns 43 Proxy error: <message>.
 
-(If you attempt any bonus enhancements, document them in this section.)
+### Bonus enhancements
+#### Concurrent proxy
+My proxy also uses the same multithreaded server design as mentioned above.  
+`Executors.newFixedThreadPool(32)`  
+And the same way as my server does, if there's an error, it prints out an error message but does not stop the whole process - failing gracefully.  
+To test whether my proxy supports multiple simultaneous requests, I ran the origin server on port 1958, the proxy on port 1959, and started 20 parallel Client instances with GEMINI_LITE_PROXY=localhost:1959.
+![Proxy concurrency example](screenshotsForReport/proxyconc.png)
 
 # Alternative DNS, Bakeoff and Wireshark outputs
 ### A trace of iterative DNS resolution of a domain in our local DNS tree
@@ -348,4 +377,4 @@ Within the Gemini Lite specification, it is acceptable for a proxy to simply rel
 #### Do you need to change the specification for how clients are required to behave? If so, how? Perhaps there’s an alternative interaction style that allows inline display of images while sticking to the letter of the spec?
 
 
-Criticise the protocol more generally, in light of the needs of application programs as discussed in class. Does it offer reliable delivery? Does it make efficient use of available bandwidth? Is it precisely-enough specified? How could it be improved?
+### 5. Criticise the protocol more generally, in light of the needs of application programs as discussed in class. Does it offer reliable delivery? Does it make efficient use of available bandwidth? Is it precisely-enough specified? How could it be improved?
