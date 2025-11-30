@@ -50,6 +50,12 @@ public final class Reply {
             throw new ProtocolSyntaxException("Non-numeric status: " + codeStr);
         }
 
+        if (code >= 20 && code < 30) {
+            if (sp == -1 || meta.isBlank()) {
+                throw new ProtocolSyntaxException("Success status requires MIME type metadata");
+            }
+        }
+
         return new Reply(code, meta);
     }
 
