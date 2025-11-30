@@ -30,6 +30,7 @@
     "type": "client",
     "name": "Client handles input reply and encodes input as query.",
     "url": "gemini-lite://localhost:1958/input",
+    "input": "secret value",
     "transactions": [
       {
         "url": "gemini-lite://localhost:1958/input",
