@@ -2,12 +2,7 @@
     "type": "client",
     "name": "Invalid localhost port number in the URL.",
     "url": "gemini-lite://localhost:900B/",
-    "transactions": [
-      {
-        "url": "gemini-lite://localhost:900B/",
-        "reply": "59 Malformed Request"
-      }
-    ],
+    "transactions": [],
     "exitcode": 1,
     "stdout": "",
     "justification": "If the user accidentally enters an invalid port number (in this case including a letter), that's a local parsing error. It's mentioned in requirement 2: 'if some local error situation arises... the client must print an error report to System.err, must not output anything to System.out, and must terminate with exit code 1.'"
