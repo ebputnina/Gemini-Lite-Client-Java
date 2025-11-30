@@ -373,8 +373,22 @@ Within the Gemini Lite specification, it is acceptable for a proxy to simply rel
 
 ### 4. Imagine you are building a graphical browser for Gemtext, with clickable hyperlinks and so on. Imagine you are asked to change the overall system—this could mean any combination of changes to your client program, to gemini-lite servers, or to the gemini-lite or Gemtext protocol specifications themselves—to implement support for inline display of images in a page.
 #### Do you need to make changes to the gemini-lite network protocol? If so, which?
+I believe you don't need to make changes to the gemini-lite network protocol itself. After reading the protocol again, I noticed that there are MIME types such as image/jpeg, image/png, etc. (mentioned in RFC 2045/2046). Thus, no changes or extensions are necessary.
 #### Do you need to make changes to the Gemtext format? If so, which?
+Gemtext originally does not have any syntax for inline elements, however there are links. If you add a link with "=>", you can modify your client to interpret them as inline. Thus, you can add a specific inline image syntax to Gemtext protocol, however you can make use of what is already there.
 #### Do you need to change the specification for how clients are required to behave? If so, how? Perhaps there’s an alternative interaction style that allows inline display of images while sticking to the letter of the spec?
-
+There's a line in the protocol that goes like this: "Clients can present links to users in whatever fashion the client author wishes, however clients MUST NOT automatically make any network connections as part of displaying links." Thus, we can get the links to show up, but if there hasn't been any user action, they do not get fetched. With the said user action, we can surely show the image inline.
+However, if we do not want to make the user do anything to get the image, the change needed in the specification for how clients are required to behave is that client can automatically make network connections and display the images. 
 
 ### 5. Criticise the protocol more generally, in light of the needs of application programs as discussed in class. Does it offer reliable delivery? Does it make efficient use of available bandwidth? Is it precisely-enough specified? How could it be improved?
+#### Reliability of delivery
+The Gemini protocol offers reliable delivery because it is built on top of TCP, which provides loss-free transmission with acknowledgments and retransmissions. Gemini’s mandatory TLS layer adds confidentiality and integrity protection, but it does not introduce any additional reliability mechanisms of its own. That could enforce its reliability.
+#### Bandwidth efficiency 
+Gemini poorly utilizes bandwidth due to deliberate omissions: no compression support, no caching headers (there are no specifications of expiration, modification tags, etc.), and it requires closing the TCP/TLS connection after every response, forcing a full handshake for each resource fetch.
+#### Specification precision
+I know that the Gemini-Lite protocol prioritises implementer simplicity over completeness, but this comes at the cost of several ambiguities. For example, as I mentioned above when talking about inline image display, the specification says "Clients can present links to users in whatever fashion the client author wishes", which, in my opinion, introduces ambiguity. It gives the choice for everyone to be "original", resulting in inconsistent user experiences and non-uniform behaviour across implementations.
+#### My advice on improvements
+Here are some of my ideas as to how the protocol could be improved:
+* Adding optional metadata for caching: would reduce the bandwidth usage and latency.
+* Some security enhancements: security could be improved by defining clearer and more consistent handling of TLS-related failures.
+* More detailed error handling: clearer error codes and guidelines for retry behaviour.
