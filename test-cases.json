@@ -61,14 +61,14 @@
   },
   {
     "type": "server",
-    "name": "Listen on optional custom port (not hardcoded 1958)",
+    "name": "Reject path traversal attempts outside docroot",
     "documents": {
-      "index.txt": "Server is running on port 2000"
+      "index.txt": "Hello ello"
     },
-    "request": "gemini-lite://localhost:2000/index.txt\r\n",
-    "reply_regex": "^20 text/plain$",
-    "body": "Server is running on port 2000",
-    "justification": "As per Requirement 3 in 'Course Project: Gemini Lite', the server must accept an optional [<port>] argument. This test checks that the server can listen on a custom port (2000 in this case) instead of the default 1958."
+    "request": "gemini-lite://localhost/../../../../../../etc/passwd\r\n",
+    "reply_regex": "^51 .*",
+    "body": "",
+    "justification": "As per Requirement 3 in 'Course Project: Gemini Lite', 'ensure your program cannot allow clients to request files from outside the specified document root directory'."
   },
   {
     "type": "server",
