@@ -89,16 +89,14 @@
   },
   {
     "type": "server",
-    "name": "Request directory path without trailing slash",
+    "name": "Serves text/gemini MIME type for files with .gmi",
     "documents": {
-      "subdirectory": {
-        "index.txt": "Hello from a cool subfolder"
-      }
+      "index.gmi": "## ₍^. .^₎⟆ "
     },
-    "request": "gemini-lite://localhost/subfolder\r\n",
-    "reply_regex": "^51 .*",
-    "body": "",
-    "justification": "As mentioned in Requirement 3 'Course Project: Gemini Lite', the server must not implicityl map directory requests to index files."
+    "request": "gemini-lite://localhost/index.gmi\r\n",
+    "reply_regex": "^20 text/gemini$",
+    "body": "## ₍^. .^₎⟆ ",
+    "justification": "Requirement 3 'Course Project: Gemini Lite' mandates that .gmi files must be served as text/gemini."
   },
   {
     "type": "proxy",
