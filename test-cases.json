@@ -9,17 +9,17 @@
   },
   {
     "type": "client",
-    "name": "Client always connects to GEMINI_LITE_PROXY environment variable.",
-    "url": "gemini-lite://origin.example/index.txt",
+    "name": "Client rejects 20 reply without metadata.",
+    "url": "gemini-lite://localhost/badheader",
     "transactions": [
       {
-        "url": "gemini-lite://origin.example/index.txt",
-        "reply": "20 text/plain"
+        "url": "gemini-lite://localhost/badheader",
+        "reply": "20\r\n"
       }
     ],
-    "exitcode": 0,
-    "stdout": "Hello from origin\n",
-    "justification": "Requirement 4 states: 'if an environment variable GEMINI_LITE_PROXY is defined as a hostname:port string (e.g. GEMINI_LITE_PROXY=proxy.example:9999), then the client will always connect to that hostname and port instead of to whatever hostname and port is associated with a given URL to be retrieved.'"
+    "exitcode": 1,
+    "stdout": "",
+    "justification": "The Gemini protocol, below the name Success, states that a 20 Success status must include a MIME type as metadata: 'success  = \"2\" DIGIT SP mimetype CRLF body'. "
   },
   {
     "type": "client",
