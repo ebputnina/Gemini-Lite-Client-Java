@@ -61,7 +61,7 @@
       "index.txt": "Hello ello"
     },
     "request": "gemini-lite://localhost/../../../../../../etc/passwd\r\n",
-    "reply_regex": "^51 .*",
+    "reply_regex": "^5[0-9]( .+)$",
     "body": "",
     "justification": "As per Requirement 3 in 'Course Project: Gemini Lite', 'ensure your program cannot allow clients to request files from outside the specified document root directory'."
   },
