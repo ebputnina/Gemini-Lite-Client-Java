@@ -25,7 +25,7 @@ public class ProxyRequestHandler implements RequestHandler {
         while (true) {
             try {
                 ClientEngine reqEngine = new ClientEngine();
-                Reply remoteReply = reqEngine.sendRequest(target);
+                Reply remoteReply = reqEngine.sendRequest(new URI(target.toString()));
                 int group = remoteReply.getStatusGroup();
 
                  if (group == 1 || group == 2) {
