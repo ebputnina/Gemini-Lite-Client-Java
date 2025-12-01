@@ -51,7 +51,7 @@ public class ClientEngine {
         final String path = (uri.getPath() == null || uri.getPath().isEmpty()) ? "/" : uri.getPath(); // normalize to /
         final String query = (uri.getQuery() == null) ? "" : "?" + uri.getQuery(); // is there's a query, cool keep it; otherwise nothing
 
-        final String requestLine = "gemini-lite://" + host + ((port != DEFAULT_PORT) ? (":" + port) : "") + path + query + Wire.CRLF;
+        final String requestLine = "gemini-lite://" + host + ":" + port + path + query + Wire.CRLF;
 
         // if using a proxy, connect there; otherwise, connect directly to the server
         final String connectHost = (proxyHost != null) ? proxyHost : host;
