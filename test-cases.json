@@ -24,11 +24,11 @@
   {
     "type": "client",
     "name": "Client handles input reply and encodes input as query.",
-    "url": "gemini-lite://localhost:1958/input",
+    "url": "gemini-lite://localhost:1958/input?replaced",
     "input": "secret value",
     "transactions": [
       {
-        "url": "gemini-lite://localhost:1958/input",
+        "url": "gemini-lite://localhost:1958/input?replaced",
         "reply": "11 EnterSecret\r\n"
       },
       {
@@ -37,7 +37,7 @@
       }
     ],
     "exitcode": 0,
-    "stdout": "Secret response\n",
+    "stdout": "Secret response",
     "justification": "In Gemini Network Protocol Specification (status codes), it says that 'If a client receives a 1x response to a URI that already contains a query string, the client MUST replace the query string with the user input'. "
   },
   {
