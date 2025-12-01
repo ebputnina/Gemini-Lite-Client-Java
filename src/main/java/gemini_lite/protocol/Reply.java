@@ -56,17 +56,6 @@ public final class Reply {
             }
         }
 
-        for (int i = 0; i < meta.length(); i++) {
-            char c = meta.charAt(i);
-            if (c < 0x20 || c == 0x7F || c >= 0x80) {
-                throw new ProtocolSyntaxException("Invalid control character in meta");
-            }
-        }
-
-        if (meta.length() > 1024) {
-            throw new ProtocolSyntaxException("Meta field too long");
-        }
-
         return new Reply(code, meta);
     }
 
