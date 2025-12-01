@@ -24,20 +24,28 @@ public class ProxyRequestHandler implements RequestHandler {
         int redirectCount = 0;
         while (true) {
             try {
-                Reply remoteReply = engine.sendRequest(target);
+                ClientEngine reqEngine = new ClientEngine();
+                Reply remoteReply = reqEngine.sendRequest(target);
                 int group = remoteReply.getStatusGroup();
 
                  if (group == 1 || group == 2) {
-                    return new HandlerResult(remoteReply, engine.getLastResponseBody());
+                    return new HandlerResult(remoteReply, reqEngine.getLastResponseBody());
                 }
 
                 if (group == 3) {
+                    String location = remoteReply.getMessage();
+
+                    if (location.contains(" ") || location.isEmpty()) {
+                        closeResponseBody(reqEngine);
+                        return new HandlerResult(new Reply(43, "Proxy error: invalid redirection URI"));
+                    }
+
                     if (++redirectCount > MAX_REDIRECTS) {
                         return new HandlerResult(new Reply(50, "Too many redirections (limit is 5 ;( )"));
                     }
 
-                    closeResponseBody();
-                    target = resolveRedirectUri(target, remoteReply.getMessage());
+                    closeResponseBody(reqEngine);
+                    target = resolveRedirectUri(target, location);
                     if (target == null) {
                         return new HandlerResult(new Reply(43, "Proxy error: invalid redirection URI"));
                     }
@@ -45,11 +53,11 @@ public class ProxyRequestHandler implements RequestHandler {
                 }
 
                  if (group == 4 && remoteReply.getStatus() == 44) {
-                    closeResponseBody();
+                    closeResponseBody(reqEngine);
                     Thread.sleep(RETRY_DELAY_MS);
                     continue;
                 }
-                return new HandlerResult(remoteReply, engine.getLastResponseBody());
+                return new HandlerResult(remoteReply, reqEngine.getLastResponseBody());
 
             } catch (InterruptedException ie) {
                 Thread.currentThread().interrupt();
@@ -60,10 +68,13 @@ public class ProxyRequestHandler implements RequestHandler {
             }
         }
     }
-    private void closeResponseBody() {
+    private void closeResponseBody(ClientEngine reqEngine) {
         try {
-            InputStream body = engine.getLastResponseBody();
-            if (body != null) body.close();
+            InputStream body = reqEngine.getLastResponseBody();
+            if (body != null){
+                body.readAllBytes();
+                body.close();
+            }
         } catch (Exception ignored) {
         }
     }
