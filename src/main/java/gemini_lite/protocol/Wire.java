@@ -6,10 +6,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Reads a single CRLF-terminated header line and enforces syntax rules •`ヮ´•
+ */
 public class Wire {
     public static final String CRLF = "\r\n";
     static final int MAX_HEADER_LINE = 1024;
 
+    /**
+     * reads a single header line terminated by CRLF from the input stream
+     * enforces that CR must always be followed by LF (no bare LF) and a max header length
+     * @param in Input stream positioned at the start of a header line.
+     * @return The header line as a UTF-8 string, without the trailing CRLF.
+     */
     public static String readHeaderLine(InputStream in) throws IOException {
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         int prev = -1;
@@ -33,7 +42,7 @@ public class Wire {
             if (prev == '\r' && current == '\n') {
                 // found end of header line
                 byte[] bytes = buffer.toByteArray();
-                // Remove CRLF (last 2 bytes)
+                // remove CRLF (last 2 bytes)
                 byte[] lineBytes = new byte[bytes.length - 2];
                 System.arraycopy(bytes, 0, lineBytes, 0, bytes.length - 2);
                 return new String(lineBytes, StandardCharsets.UTF_8);
