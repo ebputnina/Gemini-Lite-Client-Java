@@ -204,8 +204,8 @@ public class Client {
                 Thread.sleep(slowDownSeconds * 1000L); // slow down for as many seconds as mentioned in the message
                 return true;
             } catch (Exception e) {
-                System.err.println(reply.getMessage());
-                System.exit(44);
+                System.err.println("Status 44: Non-numeric meta (“" + reply.getMessage() + "”). Retrying :(");
+                return true;
             }
         }
 
