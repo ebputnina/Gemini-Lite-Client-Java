@@ -31,10 +31,11 @@ public class Wire {
             }
 
             // check maximum header length (not counting the final CRLF)
-            if (buffer.size() >= MAX_HEADER_LINE  && current != '\n') {
-                throw new ProtocolSyntaxException("Header line too long");
+            if (current != '\n') {
+                if (buffer.size() > MAX_HEADER_LINE) {
+                    throw new ProtocolSyntaxException("Header line too long");
+                }
             }
-            
             // add byte to buffer
             buffer.write(current);
             
