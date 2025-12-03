@@ -30,10 +30,14 @@ public class Wire {
                 throw new ProtocolSyntaxException("LF without CR");
             }
 
+            int pos = buffer.size(); // number of bytes in the buffer
             // check maximum header length (not counting the final CRLF)
-            if (current != '\n') {
-                if (buffer.size() > MAX_HEADER_LINE) {
-                    throw new ProtocolSyntaxException("Header line too long");
+            if (current != '\n' && current != '\r') {
+                if (pos >= 3) { // the first three bytes are <STATUS><SPACE> aka 2 and 1 -> so we check the length right after 3rd byte
+                    int metaLen = pos - 3;
+                    if (metaLen >= MAX_HEADER_LINE) {
+                        throw new ProtocolSyntaxException("Header line too long");
+                    }
                 }
             }
             // add byte to buffer
