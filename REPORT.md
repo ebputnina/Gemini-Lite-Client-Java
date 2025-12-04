@@ -176,31 +176,7 @@ ns1.baltics.italy.lab-kale. 10	IN	A	10.1.0.120
 ;; Query time: 23 msec  
 ;; SERVER: 10.1.0.101#53(10.1.0.101) (UDP)  
 ;; WHEN: Thu Nov 20 12:35:41 CET 2025  
-;; MSG SIZE  rcvd: 113  
-
-#### Finally...
-pi0021@pi0021:~ $ dig -t any baltics.italy.lab-kale  
-
-; <<>> DiG 9.18.41-1~deb12u1-Debian <<>> -t any baltics.italy.lab-kale  
-;; global options: +cmd  
-;; Got answer:  
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 25924  
-;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1  
-
-;; OPT PSEUDOSECTION:  
-; EDNS: version: 0, flags:; udp: 1232  
-; COOKIE: 58c20803c3d6a66501000000691efc0ed7e85798b786279c (good)  
-;; QUESTION SECTION:  
-;baltics.italy.lab-kale.		IN	ANY  
-
-;; ANSWER SECTION:  
-baltics.italy.lab-kale.	10	IN	SOA	ns1.baltics.italy.lab-kale. hostmaster.baltics.italy.lab-kale. 1 10 10 10 10  
-baltics.italy.lab-kale.	10	IN	NS	ns1.baltics.italy.lab-kale.  
-
-;; Query time: 107 msec  
-;; SERVER: 10.1.0.1#53(10.1.0.1) (TCP)  
-;; WHEN: Thu Nov 20 12:31:26 CET 2025  
-;; MSG SIZE  rcvd: 144  
+;; MSG SIZE  rcvd: 113
 
 
 ### Our modified /var/lib/bind/db.zone.lab-kale
