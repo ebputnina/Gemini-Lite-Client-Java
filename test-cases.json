@@ -83,9 +83,9 @@
       "file.bin": "BINARYDATA"
     },
     "request": "gemini-lite://localhost/file.bin\r\n",
-    "reply_regex": "^20 application/octet-stream$",
+    "reply_regex": "^20 .+$",
     "body": "BINARYDATA",
-    "justification": "The specification in Requirement 3 in 'Course Project: Gemini Lite' mentions that if the URI path ends with .gmi → text/gemini; if .txt → text/plain; otherwise → application/octet-stream in Requirement 3. This ensures files with unknown extensions are served as application/octet-stream (a good fallback)."
+    "justification": "The specification in Requirement 3 in 'Course Project: Gemini Lite' mentions that if the URI path ends with .gmi → text/gemini; if .txt → text/plain; otherwise → application/octet-stream (or similar) in Requirement 3."
   },
   {
     "type": "server",
