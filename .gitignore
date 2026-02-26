@@ -1,2 +1,6 @@
 /target/
 /.vscode/
+/screenshotsForReport/
+/lab5_client_session.txt
+/lab5_dhcp.txt
+/lab5_server_session.txt
